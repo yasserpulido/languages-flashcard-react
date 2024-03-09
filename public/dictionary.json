@@ -1,0 +1,18 @@
+{
+    "japanese": [
+        {
+            "id": 1,
+            "word": "おちゃ",
+            "romanji": "o cha",
+            "translation": "green teas, green tea, tea",
+            "audioName": "tea.mp3"
+        },
+        {
+            "id": 2,
+            "word": "ください",
+            "romanji": "ku da sa i",
+            "translation": "please",
+            "audioName": "please.mp3"
+        }
+    ]
+}
