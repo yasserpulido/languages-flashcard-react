@@ -1,12 +1,14 @@
 import { Volume } from "grommet-icons";
 import { Flashcard as FlashcardType } from "../../types";
 import { useDictionary } from "../../hooks/use-dictionary";
+import { useEffect, useState } from "react";
 
 type Props = {
   flashcard: FlashcardType;
 };
 
 const Flashcard = ({ flashcard }: Props) => {
+  const [animationClass, setAnimationClass] = useState("animate-rotate-y");
   const { showFlashcard } = useDictionary();
 
   const { audioName, romanji, translation, word } = flashcard;
@@ -16,8 +18,19 @@ const Flashcard = ({ flashcard }: Props) => {
     audio.play();
   };
 
+  useEffect(() => {
+    setAnimationClass("");
+    const timeoutId = setTimeout(() => {
+      setAnimationClass("animate-rotate-y");
+    }, 10);
+
+    return () => clearTimeout(timeoutId);
+  }, [flashcard]);
+
   return (
-    <div className="bg-blue-500 w-96 h-96 rounded-lg flex flex-col justify-evenly items-center shadow-md shadow-black">
+    <div
+      className={`bg-blue-500 w-96 h-96 rounded-lg flex flex-col justify-evenly items-center shadow-md shadow-black ${animationClass}`}
+    >
       <div className="font-bold text-xl text-white flex flex-col items-center gap-1">
         <div className="flex gap-2 items-center">
           <span onClick={() => playAudio(audioName)} className="cursor-pointer">
@@ -30,7 +43,7 @@ const Flashcard = ({ flashcard }: Props) => {
       <hr className="w-3/4" />
       <div className="text-white">
         <span className="text-base text-gray-200">
-          {showFlashcard ? translation : "Click to see translation"}
+          {showFlashcard ? translation : "Click on show to see translation"}
         </span>
       </div>
     </div>

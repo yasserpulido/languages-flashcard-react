@@ -1,17 +1,35 @@
 import { createContext, useEffect, useState } from "react";
 import { Flashcard } from "../types";
 
+type Stats = {
+  easy: number[];
+  hard: number[];
+};
+
 type DictionaryContextType = {
   currentFlashcard: Flashcard | null;
   showFlashcard: boolean;
-  goNext: () => void;
+  stats: Stats;
+  showMenu: boolean;
+  returnToMenu: () => void;
+  startQuiz: () => void;
+  markEasy: (id: number) => void;
+  markHard: (id: number) => void;
   toggleFlashcard: () => void;
 };
 
 export const DictionaryContext = createContext<DictionaryContextType>({
   currentFlashcard: null,
   showFlashcard: false,
-  goNext: () => {},
+  stats: {
+    easy: [],
+    hard: [],
+  },
+  showMenu: false,
+  returnToMenu: () => {},
+  startQuiz: () => {},
+  markEasy: () => {},
+  markHard: () => {},
   toggleFlashcard: () => {},
 });
 
@@ -21,8 +39,10 @@ type DictionaryProviderProps = {
 
 const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   const [dictionary, setDictionary] = useState<Flashcard[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [maze, setMaze] = useState<Flashcard[]>([]);
   const [showFlashcard, setShowFlashcard] = useState(false);
+  const [stats, setStats] = useState<Stats>({ easy: [], hard: [] });
+  const [showMenu, setShowMenu] = useState(true);
 
   useEffect(() => {
     const fetchDictorionary = async () => {
@@ -39,17 +59,82 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     setShowFlashcard((prev) => !prev);
   };
 
-  const goNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % dictionary.length);
+  const markEasy = (id: number) => {
+    setMaze((prev) => prev.filter((word) => word.id !== id));
     setShowFlashcard(false);
+
+    setStats((prev) => {
+      if (prev.easy.includes(id)) return prev;
+
+      const hardIndex = prev.hard.indexOf(id);
+
+      if (hardIndex !== -1) {
+        prev.hard.splice(hardIndex, 1);
+      }
+
+      return { ...prev, easy: [...prev.easy, id] };
+    });
+  };
+
+  const markHard = (id: number) => {
+    setMaze((prevState) => {
+      const flashcardIndex = prevState.findIndex(
+        (flashcard) => flashcard.id === id
+      );
+
+      if (flashcardIndex === -1) return prevState;
+
+      const flashcard = prevState[flashcardIndex];
+
+      return [
+        ...prevState.slice(0, flashcardIndex),
+        ...prevState.slice(flashcardIndex + 1),
+        flashcard,
+      ];
+    });
+
+    setShowFlashcard(false);
+
+    setStats((prev) => {
+      if (prev.hard.includes(id)) return prev;
+
+      const easyIndex = prev.easy.indexOf(id);
+
+      if (easyIndex !== -1) {
+        prev.easy.splice(easyIndex, 1);
+      }
+
+      return { ...prev, hard: [...prev.hard, id] };
+    });
+  };
+
+  const startQuiz = () => {
+    const dictionaryShuffled = dictionary.sort(() => Math.random() - 0.5);
+
+    if (dictionaryShuffled.length > 5) {
+      dictionaryShuffled.length = 5;
+    }
+
+    setMaze(dictionaryShuffled);
+    setStats({ easy: [], hard: [] });
+    setShowMenu(false);
+  };
+
+  const returnToMenu = () => {
+    setShowMenu(true);
   };
 
   return (
     <DictionaryContext.Provider
       value={{
-        currentFlashcard: dictionary[currentIndex],
+        currentFlashcard: maze[0],
         showFlashcard,
-        goNext,
+        stats,
+        showMenu,
+        returnToMenu,
+        startQuiz,
+        markEasy,
+        markHard,
         toggleFlashcard,
       }}
     >
