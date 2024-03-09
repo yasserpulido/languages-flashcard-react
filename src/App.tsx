@@ -5,10 +5,10 @@ function App() {
   const { currentFlashcard, stats, showMenu, startQuiz, returnToMenu } = useDictionary();
 
   return (
-    <div className="min-h-screen flex flex-col gap-8 justify-center items-center bg-gray-200">
+    <div className="min-h-screen flex flex-col gap-8 justify-center items-center bg-gray-200 p-4">
       {showMenu ? (
         <>
-          <h1 className="text-4xl font-bold text-gray-800">
+          <h1 className="text-4xl font-bold text-gray-800 text-center">
             Japanese Flashcards
           </h1>
 

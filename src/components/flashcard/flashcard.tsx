@@ -29,7 +29,7 @@ const Flashcard = ({ flashcard }: Props) => {
 
   return (
     <div
-      className={`bg-blue-500 w-96 h-96 rounded-lg flex flex-col justify-evenly items-center shadow-md shadow-black ${animationClass}`}
+      className={`bg-blue-500 h-96 max-w-96 p-4 w-full rounded-lg flex flex-col justify-evenly items-center shadow-md shadow-black ${animationClass}`}
     >
       <div className="font-bold text-xl text-white flex flex-col items-center gap-1">
         <div className="flex gap-2 items-center">
