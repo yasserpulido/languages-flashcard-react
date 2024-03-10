@@ -26,14 +26,14 @@
             "word": "ごはん",
             "romanji": "go ha n",
             "translation": "rice, meal, meals",
-            "audioName": "rice.mp3"
+            "audioName": "gohan.mp3"
         },
         {
             "id": 5,
             "word": "みず",
             "romanji": "mi zu",
             "translation": "water",
-            "audioName": "water.mp3"
+            "audioName": "mizu.mp3"
         },
         {
             "id": 6,

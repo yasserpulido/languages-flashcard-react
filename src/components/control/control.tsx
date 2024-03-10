@@ -1,7 +1,7 @@
 import { useDictionary } from "../../hooks/use-dictionary";
 
 const Control = () => {
-  const { toggleFlashcard, currentFlashcard, markEasy, markHard } = useDictionary();
+  const { toggleFlashcard, currentFlashcard, showFlashcard, markEasy, markHard } = useDictionary();
 
   if (!currentFlashcard) {
     return null;
@@ -13,7 +13,7 @@ const Control = () => {
         onClick={toggleFlashcard}
         className="bg-gray-500 hover:bg-gray-400 text-base text-white px-4 py-1 rounded font-bold shadow-sm shadow-black"
       >
-        Show
+        {showFlashcard ? "Hide" : "Show"}
       </button>
       <div className="flex justify-between items-center gap-8">
         <button
