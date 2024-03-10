@@ -108,8 +108,17 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     });
   };
 
+  const shuffleArray = (array: Flashcard[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+
+    return array;
+  };
+
   const startQuiz = () => {
-    const dictionaryShuffled = dictionary.sort(() => Math.random() - 0.5);
+    const dictionaryShuffled = shuffleArray([...dictionary]);
 
     if (dictionaryShuffled.length > 5) {
       dictionaryShuffled.length = 5;
@@ -121,6 +130,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   };
 
   const returnToMenu = () => {
+    setMaze([]);
     setShowMenu(true);
   };
 
