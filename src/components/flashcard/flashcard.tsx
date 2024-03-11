@@ -11,7 +11,7 @@ const Flashcard = ({ flashcard }: Props) => {
   const [animationClass, setAnimationClass] = useState("animate-rotate-y");
   const { showFlashcard } = useDictionary();
 
-  const { audioName, romanji, translation, word } = flashcard;
+  const { audioName, romaji, translation, word } = flashcard;
 
   const playAudio = (audioName: string) => {
     const audio = new Audio(`/audios/${audioName}`);
@@ -38,7 +38,7 @@ const Flashcard = ({ flashcard }: Props) => {
           </span>
           <span>{word}</span>
         </div>
-        <span className="text-sm text-gray-200">({romanji})</span>
+        <span className="text-sm text-gray-200">({romaji})</span>
       </div>
       <hr className="w-3/4" />
       <div className="text-white">

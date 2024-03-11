@@ -3,93 +3,100 @@
         {
             "id": 1,
             "word": "おちゃ",
-            "romanji": "o cha",
+            "romaji": "o cha",
             "translation": "green teas, green tea, tea",
             "audioName": "ocha.mp3"
         },
         {
             "id": 2,
             "word": "ください",
-            "romanji": "ku da sa i",
+            "romaji": "ku da sa i",
             "translation": "please",
             "audioName": "kudasai.mp3"
         },
         {
             "id": 3,
             "word": "すし",
-            "romanji": "su shi",
+            "romaji": "su shi",
             "translation": "sushi",
             "audioName": "sushi.mp3"
         },
         {
             "id": 4,
             "word": "ごはん",
-            "romanji": "go ha n",
+            "romaji": "go ha n",
             "translation": "rice, meal, meals",
             "audioName": "gohan.mp3"
         },
         {
             "id": 5,
             "word": "みず",
-            "romanji": "mi zu",
+            "romaji": "mi zu",
             "translation": "water",
             "audioName": "mizu.mp3"
         },
         {
             "id": 6,
             "word": "と",
-            "romanji": "to",
+            "romaji": "to",
             "translation": "and, that, door",
             "audioName": "to.mp3"
         },
         {
             "id": 7,
             "word": "いしゃ",
-            "romanji": "i sha",
+            "romaji": "i sha",
             "translation": "doctor, doctors",
             "audioName": "isha.mp3"
         },
         {
             "id": 8,
             "word": "せんせい",
-            "romanji": "se n se i",
+            "romaji": "se n se i",
             "translation": "teacher, Professor, teachers",
             "audioName": "sensei.mp3"
         },
         {
             "id": 9,
             "word": "やさしい",
-            "romanji": "ya sa shi i",
+            "romaji": "ya sa shi i",
             "translation": "kind, easy, nice",
             "audioName": "yasashii.mp3"
         },
         {
             "id": 10,
             "word": "べんごし",
-            "romanji": "be n go shi",
+            "romaji": "be n go shi",
             "translation": "lawyer, lawyers",
             "audioName": "bengoshi.mp3"
         },
         {
             "id": 11,
             "word": "かっこいい",
-            "romanji": "ka kko i i",
+            "romaji": "ka kko i i",
             "translation": "cool, good-looking, stylish",
             "audioName": "kakkoii.mp3"
         },
         {
             "id": 12,
             "word": "ひと",
-            "romanji": "hi to",
+            "romaji": "hi to",
             "translation": "person, people",
             "audioName": "hito.mp3"
         },
         {
             "id": 13,
             "word": "がくせい",
-            "romanji": "ga ku se i",
+            "romaji": "ga ku se i",
             "translation": "student, students",
             "audioName": "gakusei.mp3"
+        },
+        {
+            "id": 14,
+            "word": "こんにちは",
+            "romaji": "ko n ni chi wa",
+            "translation": "hello, good afternoon",
+            "audioName": "konnichiwa.mp3"
         }
     ]
 }
