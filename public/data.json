@@ -441,6 +441,27 @@
                     "romaji": "sa n",
                     "translation": "Mr., Mrs., Miss, Ms.",
                     "audioName": "san.mp3"
+                },
+                {
+                    "id": 17,
+                    "word": "は",
+                    "romaji": "wa",
+                    "translation": "topic marker particle",
+                    "audioName": "wa.mp3"
+                },
+                {
+                    "id": 18,
+                    "word": "これ",
+                    "romaji": "ko re",
+                    "translation": "this",
+                    "audioName": "kore.mp3"
+                },
+                {
+                    "id": 19,
+                    "word": "それ",
+                    "romaji": "so re",
+                    "translation": "that",
+                    "audioName": "sore.mp3"
                 }
             ]
         }

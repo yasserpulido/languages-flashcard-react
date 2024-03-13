@@ -104,7 +104,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen h-full flex flex-col bg-gray-200 p-4">
+    <div className="min-h-screen h-full flex flex-col bg-white p-4">
       <Modal ref={modal}>
         <h1 className="text-2xl font-bold text-gray-800 text-center">
           Syllabary Quiz
@@ -236,9 +236,10 @@ function App() {
           </>
         )}
       </div>
-      <footer className="mt-auto">
-        <p className="text-gray-500 text-sm text-center">
-          Created by{" "}
+      <footer className="mt-auto flex flex-col items-center">
+        <div className="w-32 h-32 bg-red-500 rounded-full"></div>
+        <p className="text-gray-500 text-sm text-center mt-4">
+          Developed with ❤ by{" "}
           <a href="https://yasserpulido.com/" target="_blank" rel="noreferrer">
             <span className="hover:text-gray-600">Yasser Pulido</span>
           </a>
