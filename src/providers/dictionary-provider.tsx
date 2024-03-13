@@ -23,6 +23,7 @@ type DictionaryContextType = {
   showMenu: boolean;
   isDictionaryQuiz: boolean;
   isWritingQuiz: boolean;
+  resetQuiz: () => void;
   returnToMenu: () => void;
   startQuiz: (quizConfig: Quiz) => void;
   markEasy: (id: number) => void;
@@ -40,6 +41,7 @@ export const DictionaryContext = createContext<DictionaryContextType>({
   showMenu: false,
   isDictionaryQuiz: false,
   isWritingQuiz: false,
+  resetQuiz: () => {},
   returnToMenu: () => {},
   startQuiz: () => {},
   markEasy: () => {},
@@ -59,6 +61,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   const [showMenu, setShowMenu] = useState(true);
   const [isDictionaryQuiz, setIsDictionaryQuiz] = useState(false);
   const [isWritingQuiz, setIsWritingQuiz] = useState(false);
+  const [quizConfig, setQuizConfig] = useState<Quiz | null>(null);
 
   useEffect(() => {
     const fetchDictorionary = async () => {
@@ -138,6 +141,8 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   };
 
   const startQuiz = (quizConfig: Quiz) => {
+    setQuizConfig(quizConfig)
+
     const isDictionaryQuiz = quizConfig.type === "dictionary";
 
     if (!isDictionaryQuiz && quizConfig.config) {
@@ -183,6 +188,10 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     setShowFlashcard(false);
   };
 
+  const resetQuiz = () => {
+    startQuiz(quizConfig as Quiz);
+  }
+
   return (
     <DictionaryContext.Provider
       value={{
@@ -192,6 +201,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
         showMenu,
         isDictionaryQuiz,
         isWritingQuiz,
+        resetQuiz,
         returnToMenu,
         startQuiz,
         markEasy,

@@ -72,8 +72,14 @@ const SYLLABARY_GROUP_OPTIONS = [
 
 function App() {
   const modal = useRef<ModalAuthMethods>(null);
-  const { currentFlashcard, stats, showMenu, startQuiz, returnToMenu } =
-    useDictionary();
+  const {
+    currentFlashcard,
+    stats,
+    showMenu,
+    startQuiz,
+    returnToMenu,
+    resetQuiz,
+  } = useDictionary();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -84,7 +90,11 @@ function App() {
     const sort = formData.get("sort") as string;
     const writing = formData.get("writing") !== null;
 
-    startQuiz({ type: "syllabary", config: { syllabary, group, sort }, writing });
+    startQuiz({
+      type: "syllabary",
+      config: { syllabary, group, sort },
+      writing,
+    });
 
     if (modal.current) {
       modal.current.close();
@@ -149,14 +159,17 @@ function App() {
           <div className="mt-4">
             <div className="flex items-center">
               <input type="checkbox" name="writing" value="writing" />
-              <label className="ml-2" htmlFor="writing"> Is writing quiz?</label>
+              <label className="ml-2" htmlFor="writing">
+                {" "}
+                Is writing quiz?
+              </label>
             </div>
           </div>
           <hr className="my-4" />
           <div className="mt-4 text-right">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded font-bold shadow-sm shadow-black animate-fade-up"
+              className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded font-bold shadow-sm shadow-black"
             >
               Start Quiz
             </button>
@@ -204,10 +217,19 @@ function App() {
                 <Control />
               </>
             ) : (
-              <h1 className="text-4xl font-bold text-gray-800">
-                Quiz Complete!
-              </h1>
+              <>
+                <h1 className="text-4xl font-bold text-gray-800">
+                  Quiz Complete!
+                </h1>
+                <button
+                  onClick={resetQuiz}
+                  className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded font-bold shadow-sm shadow-black"
+                >
+                  Reset Quiz
+                </button>
+              </>
             )}
+
             <button onClick={returnToMenu} className="text-base text-black">
               Return to Menu
             </button>
