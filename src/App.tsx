@@ -9,8 +9,8 @@ const SYLLABARY_GROUP_OPTIONS = [
     label: "All",
   },
   {
-    value: "VOWELS",
-    label: "Vowels",
+    value: "VOWEL",
+    label: "vowel",
   },
   {
     value: "K",
@@ -120,7 +120,7 @@ function App() {
               <label className="ml-2">Hiragana</label>
             </div>
             <div className="flex items-center">
-              <input type="radio" name="syllabary" value="katakana" />
+              <input type="radio" name="syllabary" value="katakana" disabled />
               <label className="ml-2">Katakana</label>
             </div>
           </div>
