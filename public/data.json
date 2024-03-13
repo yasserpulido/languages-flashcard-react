@@ -1,0 +1,441 @@
+{
+    "languages": {
+        "japanese": {
+            "syllabary": [
+                {
+                    "hiragana": [
+                        {
+                            "id": 1,
+                            "kana": "あ",
+                            "romaji": "a",
+                            "audioName": "a.mp3",
+                            "type": "vowel"
+                        },
+                        {
+                            "id": 2,
+                            "kana": "い",
+                            "romaji": "i",
+                            "audioName": "i.mp3",
+                            "type": "vowel"
+                        },
+                        {
+                            "id": 3,
+                            "kana": "う",
+                            "romaji": "u",
+                            "audioName": "u.mp3",
+                            "type": "vowel"
+                        },
+                        {
+                            "id": 4,
+                            "kana": "え",
+                            "romaji": "e",
+                            "audioName": "e.mp3",
+                            "type": "vowel"
+                        },
+                        {
+                            "id": 5,
+                            "kana": "お",
+                            "romaji": "o",
+                            "audioName": "o.mp3",
+                            "type": "vowel"
+                        },
+                        {
+                            "id": 6,
+                            "kana": "か",
+                            "romaji": "ka",
+                            "audioName": "ka.mp3",
+                            "type": "k"
+                        },
+                        {
+                            "id": 7,
+                            "kana": "き",
+                            "romaji": "ki",
+                            "audioName": "ki.mp3",
+                            "type": "k"
+                        },
+                        {
+                            "id": 8,
+                            "kana": "く",
+                            "romaji": "ku",
+                            "audioName": "ku.mp3",
+                            "type": "k"
+                        },
+                        {
+                            "id": 9,
+                            "kana": "け",
+                            "romaji": "ke",
+                            "audioName": "ke.mp3",
+                            "type": "k"
+                        },
+                        {
+                            "id": 10,
+                            "kana": "こ",
+                            "romaji": "ko",
+                            "audioName": "ko.mp3",
+                            "type": "k"
+                        },
+                        {
+                            "id": 11,
+                            "kana": "さ",
+                            "romaji": "sa",
+                            "audioName": "sa.mp3",
+                            "type": "s"
+                        },
+                        {
+                            "id": 12,
+                            "kana": "し",
+                            "romaji": "shi",
+                            "audioName": "shi.mp3",
+                            "type": "s"
+                        },
+                        {
+                            "id": 13,
+                            "kana": "す",
+                            "romaji": "su",
+                            "audioName": "su.mp3",
+                            "type": "s"
+                        },
+                        {
+                            "id": 14,
+                            "kana": "せ",
+                            "romaji": "se",
+                            "audioName": "se.mp3",
+                            "type": "s"
+                        },
+                        {
+                            "id": 15,
+                            "kana": "そ",
+                            "romaji": "so",
+                            "audioName": "so.mp3",
+                            "type": "s"
+                        },
+                        {
+                            "id": 16,
+                            "kana": "た",
+                            "romaji": "ta",
+                            "audioName": "ta.mp3",
+                            "type": "t"
+                        },
+                        {
+                            "id": 17,
+                            "kana": "ち",
+                            "romaji": "chi",
+                            "audioName": "chi.mp3",
+                            "type": "t"
+                        },
+                        {
+                            "id": 18,
+                            "kana": "つ",
+                            "romaji": "tsu",
+                            "audioName": "tsu.mp3",
+                            "type": "t"
+                        },
+                        {
+                            "id": 19,
+                            "kana": "て",
+                            "romaji": "te",
+                            "audioName": "te.mp3",
+                            "type": "t"
+                        },
+                        {
+                            "id": 20,
+                            "kana": "と",
+                            "romaji": "to",
+                            "audioName": "to.mp3",
+                            "type": "t"
+                        },
+                        {
+                            "id": 21,
+                            "kana": "な",
+                            "romaji": "na",
+                            "audioName": "na.mp3",
+                            "type": "n"
+                        },
+                        {
+                            "id": 22,
+                            "kana": "に",
+                            "romaji": "ni",
+                            "audioName": "ni.mp3",
+                            "type": "n"
+                        },
+                        {
+                            "id": 23,
+                            "kana": "ぬ",
+                            "romaji": "nu",
+                            "audioName": "nu.mp3",
+                            "type": "n"
+                        },
+                        {
+                            "id": 24,
+                            "kana": "ね",
+                            "romaji": "ne",
+                            "audioName": "ne.mp3",
+                            "type": "n"
+                        },
+                        {
+                            "id": 25,
+                            "kana": "の",
+                            "romaji": "no",
+                            "audioName": "no.mp3",
+                            "type": "n"
+                        },
+                        {
+                            "id": 26,
+                            "kana": "は",
+                            "romaji": "ha",
+                            "audioName": "ha.mp3",
+                            "type": "h"
+                        },
+                        {
+                            "id": 27,
+                            "kana": "ひ",
+                            "romaji": "hi",
+                            "audioName": "hi.mp3",
+                            "type": "h"
+                        },
+                        {
+                            "id": 28,
+                            "kana": "ふ",
+                            "romaji": "fu",
+                            "audioName": "fu.mp3",
+                            "type": "h"
+                        },
+                        {
+                            "id": 29,
+                            "kana": "へ",
+                            "romaji": "he",
+                            "audioName": "he.mp3",
+                            "type": "h"
+                        },
+                        {
+                            "id": 30,
+                            "kana": "ほ",
+                            "romaji": "ho",
+                            "audioName": "ho.mp3",
+                            "type": "h"
+                        },
+                        {
+                            "id": 31,
+                            "kana": "ま",
+                            "romaji": "ma",
+                            "audioName": "ma.mp3",
+                            "type": "m"
+                        },
+                        {
+                            "id": 32,
+                            "kana": "み",
+                            "romaji": "mi",
+                            "audioName": "mi.mp3",
+                            "type": "m"
+                        },
+                        {
+                            "id": 33,
+                            "kana": "む",
+                            "romaji": "mu",
+                            "audioName": "mu.mp3",
+                            "type": "m"
+                        },
+                        {
+                            "id": 34,
+                            "kana": "め",
+                            "romaji": "me",
+                            "audioName": "me.mp3",
+                            "type": "m"
+                        },
+                        {
+                            "id": 35,
+                            "kana": "も",
+                            "romaji": "mo",
+                            "audioName": "mo.mp3",
+                            "type": "m"
+                        },
+                        {
+                            "id": 36,
+                            "kana": "や",
+                            "romaji": "ya",
+                            "audioName": "ya.mp3",
+                            "type": "y"
+                        },
+                        {
+                            "id": 37,
+                            "kana": "ゆ",
+                            "romaji": "yu",
+                            "audioName": "yu.mp3",
+                            "type": "y"
+                        },
+                        {
+                            "id": 38,
+                            "kana": "よ",
+                            "romaji": "yo",
+                            "audioName": "yo.mp3",
+                            "type": "y"
+                        },
+                        {
+                            "id": 39,
+                            "kana": "ら",
+                            "romaji": "ra",
+                            "audioName": "ra.mp3",
+                            "type": "r"
+                        },
+                        {
+                            "id": 40,
+                            "kana": "り",
+                            "romaji": "ri",
+                            "audioName": "ri.mp3",
+                            "type": "r"
+                        },
+                        {
+                            "id": 41,
+                            "kana": "る",
+                            "romaji": "ru",
+                            "audioName": "ru.mp3",
+                            "type": "r"
+                        },
+                        {
+                            "id": 42,
+                            "kana": "れ",
+                            "romaji": "re",
+                            "audioName": "re.mp3",
+                            "type": "r"
+                        },
+                        {
+                            "id": 43,
+                            "kana": "ろ",
+                            "romaji": "ro",
+                            "audioName": "ro.mp3",
+                            "type": "r"
+                        },
+                        {
+                            "id": 44,
+                            "kana": "わ",
+                            "romaji": "wa",
+                            "audioName": "wa.mp3",
+                            "type": "w"
+                        },
+                        {
+                            "id": 45,
+                            "kana": "を",
+                            "romaji": "wo",
+                            "audioName": "wo.mp3",
+                            "type": "w"
+                        },
+                        {
+                            "id": 46,
+                            "kana": "ん",
+                            "romaji": "n",
+                            "audioName": "n.mp3",
+                            "type": "n"
+                        }
+                    ]
+                }
+            ],
+            "dictionary": [
+                {
+                    "id": 1,
+                    "word": "おちゃ",
+                    "romaji": "o cha",
+                    "translation": "green teas, green tea, tea",
+                    "audioName": "ocha.mp3"
+                },
+                {
+                    "id": 2,
+                    "word": "ください",
+                    "romaji": "ku da sa i",
+                    "translation": "please",
+                    "audioName": "kudasai.mp3"
+                },
+                {
+                    "id": 3,
+                    "word": "すし",
+                    "romaji": "su shi",
+                    "translation": "sushi",
+                    "audioName": "sushi.mp3"
+                },
+                {
+                    "id": 4,
+                    "word": "ごはん",
+                    "romaji": "go ha n",
+                    "translation": "rice, meal, meals",
+                    "audioName": "gohan.mp3"
+                },
+                {
+                    "id": 5,
+                    "word": "みず",
+                    "romaji": "mi zu",
+                    "translation": "water",
+                    "audioName": "mizu.mp3"
+                },
+                {
+                    "id": 6,
+                    "word": "と",
+                    "romaji": "to",
+                    "translation": "and, that, door",
+                    "audioName": "to.mp3"
+                },
+                {
+                    "id": 7,
+                    "word": "いしゃ",
+                    "romaji": "i sha",
+                    "translation": "doctor, doctors",
+                    "audioName": "isha.mp3"
+                },
+                {
+                    "id": 8,
+                    "word": "せんせい",
+                    "romaji": "se n se i",
+                    "translation": "teacher, Professor, teachers",
+                    "audioName": "sensei.mp3"
+                },
+                {
+                    "id": 9,
+                    "word": "やさしい",
+                    "romaji": "ya sa shi i",
+                    "translation": "kind, easy, nice",
+                    "audioName": "yasashii.mp3"
+                },
+                {
+                    "id": 10,
+                    "word": "べんごし",
+                    "romaji": "be n go shi",
+                    "translation": "lawyer, lawyers",
+                    "audioName": "bengoshi.mp3"
+                },
+                {
+                    "id": 11,
+                    "word": "かっこいい",
+                    "romaji": "ka kko i i",
+                    "translation": "cool, good-looking, stylish",
+                    "audioName": "kakkoii.mp3"
+                },
+                {
+                    "id": 12,
+                    "word": "ひと",
+                    "romaji": "hi to",
+                    "translation": "person, people",
+                    "audioName": "hito.mp3"
+                },
+                {
+                    "id": 13,
+                    "word": "がくせい",
+                    "romaji": "ga ku se i",
+                    "translation": "student, students",
+                    "audioName": "gakusei.mp3"
+                },
+                {
+                    "id": 14,
+                    "word": "こんにちは",
+                    "romaji": "ko n ni chi wa",
+                    "translation": "hello, good afternoon",
+                    "audioName": "konnichiwa.mp3"
+                },
+                {
+                    "id": 15,
+                    "word": "さん",
+                    "romaji": "sa n",
+                    "translation": "Mr., Mrs., Miss, Ms.",
+                    "audioName": "san.mp3"
+                }
+            ]
+        }
+    }
+}

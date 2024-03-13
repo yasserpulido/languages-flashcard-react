@@ -1,18 +1,30 @@
 import { createContext, useEffect, useState } from "react";
-import { Flashcard } from "../types";
+import { Dictionary, Japanese, Syllabary, Syllable } from "../types";
 
 type Stats = {
   easy: number[];
   hard: number[];
 };
 
+type Quiz = {
+  type: "syllabary" | "dictionary";
+  config?: {
+    syllabary: string;
+    group: string;
+    sort: string;
+  };
+  writing?: boolean;
+};
+
 type DictionaryContextType = {
-  currentFlashcard: Flashcard | null;
+  currentFlashcard: Dictionary | Syllable | null;
   showFlashcard: boolean;
   stats: Stats;
   showMenu: boolean;
+  isDictionaryQuiz: boolean;
+  isWritingQuiz: boolean;
   returnToMenu: () => void;
-  startQuiz: () => void;
+  startQuiz: (quizConfig: Quiz) => void;
   markEasy: (id: number) => void;
   markHard: (id: number) => void;
   toggleFlashcard: () => void;
@@ -26,6 +38,8 @@ export const DictionaryContext = createContext<DictionaryContextType>({
     hard: [],
   },
   showMenu: false,
+  isDictionaryQuiz: false,
+  isWritingQuiz: false,
   returnToMenu: () => {},
   startQuiz: () => {},
   markEasy: () => {},
@@ -38,18 +52,20 @@ type DictionaryProviderProps = {
 };
 
 const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
-  const [dictionary, setDictionary] = useState<Flashcard[]>([]);
-  const [maze, setMaze] = useState<Flashcard[]>([]);
+  const [japanese, setJapanese] = useState<Japanese | null>(null);
+  const [maze, setMaze] = useState<Dictionary[] | Syllable[]>([]);
   const [showFlashcard, setShowFlashcard] = useState(false);
   const [stats, setStats] = useState<Stats>({ easy: [], hard: [] });
   const [showMenu, setShowMenu] = useState(true);
+  const [isDictionaryQuiz, setIsDictionaryQuiz] = useState(false);
+  const [isWritingQuiz, setIsWritingQuiz] = useState(false);
 
   useEffect(() => {
     const fetchDictorionary = async () => {
-      const response = await fetch("/dictionary.json");
-      const { japanese } = await response.json();
+      const response = await fetch("/data.json");
+      const { languages } = await response.json();
 
-      setDictionary(japanese);
+      setJapanese(languages.japanese);
     };
 
     fetchDictorionary();
@@ -60,7 +76,11 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   };
 
   const markEasy = (id: number) => {
-    setMaze((prev) => prev.filter((word) => word.id !== id));
+    setMaze(
+      (prevState: Dictionary[] | Syllable[]) =>
+        prevState.filter((s) => s.id !== id) as typeof prevState
+    );
+
     setShowFlashcard(false);
 
     setStats((prev) => {
@@ -77,7 +97,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   };
 
   const markHard = (id: number) => {
-    setMaze((prevState) => {
+    setMaze((prevState: Dictionary[] | Syllable[]) => {
       const flashcardIndex = prevState.findIndex(
         (flashcard) => flashcard.id === id
       );
@@ -90,7 +110,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
         ...prevState.slice(0, flashcardIndex),
         ...prevState.slice(flashcardIndex + 1),
         flashcard,
-      ];
+      ] as typeof prevState;
     });
 
     setShowFlashcard(false);
@@ -108,7 +128,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     });
   };
 
-  const shuffleArray = (array: Flashcard[]) => {
+  const shuffleArray = (array: Dictionary[] | Syllable[]) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
@@ -117,21 +137,49 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     return array;
   };
 
-  const startQuiz = () => {
-    const dictionaryShuffled = shuffleArray([...dictionary]);
+  const startQuiz = (quizConfig: Quiz) => {
+    const isDictionaryQuiz = quizConfig.type === "dictionary";
 
-    if (dictionaryShuffled.length > 5) {
-      dictionaryShuffled.length = 5;
+    if (!isDictionaryQuiz && quizConfig.config) {
+      const { syllabary, group, sort } = quizConfig.config;
+
+      const syllabaryList = japanese?.syllabary
+        .map((s) => s[syllabary as keyof Syllabary])
+        .flat();
+
+      if (!syllabaryList) return;
+
+      const result =
+        group === "ALL"
+          ? syllabaryList
+          : syllabaryList.filter((s) => s.type === group.toLowerCase());
+
+      setMaze(sort === "random" ? shuffleArray(result) : result);
+      setStats({ easy: [], hard: [] });
+      setShowMenu(false);
+      setIsDictionaryQuiz(false);
+      setIsWritingQuiz(quizConfig.writing || false);
+    } else {
+      if (!japanese) return;
+
+      const dictionaryShuffled = shuffleArray(japanese.dictionary);
+
+      if (dictionaryShuffled.length > 5) {
+        dictionaryShuffled.length = 5;
+      }
+
+      setMaze(dictionaryShuffled);
+      setStats({ easy: [], hard: [] });
+      setShowMenu(false);
+      setIsDictionaryQuiz(true);
     }
-
-    setMaze(dictionaryShuffled);
-    setStats({ easy: [], hard: [] });
-    setShowMenu(false);
   };
 
   const returnToMenu = () => {
     setMaze([]);
     setShowMenu(true);
+    setIsDictionaryQuiz(false);
+    setIsWritingQuiz(false);
   };
 
   return (
@@ -141,6 +189,8 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
         showFlashcard,
         stats,
         showMenu,
+        isDictionaryQuiz,
+        isWritingQuiz,
         returnToMenu,
         startQuiz,
         markEasy,
