@@ -180,6 +180,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     setShowMenu(true);
     setIsDictionaryQuiz(false);
     setIsWritingQuiz(false);
+    setShowFlashcard(false);
   };
 
   return (
