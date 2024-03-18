@@ -196,8 +196,8 @@
                         {
                             "id": 28,
                             "kana": "ふ",
-                            "romaji": "fu",
-                            "audioName": "fu.mp3",
+                            "romaji": "hu",
+                            "audioName": "hu.mp3",
                             "type": "h"
                         },
                         {
@@ -437,10 +437,10 @@
                 },
                 {
                     "id": 16,
-                    "word": "さん",
-                    "romaji": "sa n",
-                    "translation": "Mr., Mrs., Miss, Ms.",
-                    "audioName": "san.mp3"
+                    "word": "じゃあね",
+                    "romaji": "ja a ne",
+                    "translation": "see you, goodbye",
+                    "audioName": "jaane.mp3"
                 },
                 {
                     "id": 17,
@@ -462,6 +462,62 @@
                     "romaji": "so re",
                     "translation": "that",
                     "audioName": "sore.mp3"
+                },
+                {
+                    "id": 20,
+                    "word": "はい",
+                    "romaji": "ha i",
+                    "translation": "yes",
+                    "audioName": "hai.mp3"
+                },
+                {
+                    "id": 21,
+                    "word": "いいえ",
+                    "romaji": "i i e",
+                    "translation": "no",
+                    "audioName": "iie.mp3"
+                },
+                {
+                    "id": 22,
+                    "word": "おいしい",
+                    "romaji": "o i shi i",
+                    "translation": "delicious, tasty, good",
+                    "audioName": "oishii.mp3"
+                },
+                {
+                    "id": 23,
+                    "word": "おやすみなさい",
+                    "romaji": "o ya su mi na sa i",
+                    "translation": "good night",
+                    "audioName": "oyasuminasai.mp3"
+                },
+                {
+                    "id": 24,
+                    "word": "ありがとうございます",
+                    "romaji": "a ri ga to u go za i ma su",
+                    "translation": "thank you",
+                    "audioName": "arigatougozaimasu.mp3"
+                },
+                {
+                    "id": 25,
+                    "word": "すみません",
+                    "romaji": "su mi ma se n",
+                    "translation": "excuse me, I'm sorry",
+                    "audioName": "sumimasen.mp3"
+                },
+                {
+                    "id": 26,
+                    "word": "ごめんなさい",
+                    "romaji": "go me n na sa i",
+                    "translation": "I'm sorry",
+                    "audioName": "gomenasai.mp3"
+                },
+                {
+                    "id": 27,
+                    "word": "おはよう",
+                    "romaji": "o ha yo u",
+                    "translation": "good morning",
+                    "audioName": "ohayou.mp3"
                 }
             ]
         }
