@@ -167,7 +167,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     } else {
       if (!japanese) return;
 
-      const dictionaryShuffled = shuffleArray(japanese.dictionary);
+      const dictionaryShuffled = shuffleArray([...japanese.dictionary]);
 
       if (dictionaryShuffled.length > 5) {
         dictionaryShuffled.length = 5;
