@@ -510,7 +510,7 @@
                     "word": "ごめんなさい",
                     "romaji": "go me n na sa i",
                     "translation": "I'm sorry",
-                    "audioName": "gomenasai.mp3"
+                    "audioName": "gomennasai.mp3"
                 },
                 {
                     "id": 27,
@@ -518,6 +518,34 @@
                     "romaji": "o ha yo u",
                     "translation": "good morning",
                     "audioName": "ohayou.mp3"
+                },
+                {
+                    "id": 28,
+                    "word": "おおきい",
+                    "romaji": "o o ki i",
+                    "translation": "big, large, great",
+                    "audioName": "ookii.mp3"
+                },
+                {
+                    "id": 29,
+                    "word": "にほん",
+                    "romaji": "ni ho n",
+                    "translation": "Japan",
+                    "audioName": "nihon.mp3"
+                },
+                {
+                    "id": 30,
+                    "word": "ちいさい",
+                    "romaji": "chi i sa i",
+                    "translation": "small, little",
+                    "audioName": "chiisai.mp3"
+                },
+                {
+                    "id": 31,
+                    "word": "にほんじん",
+                    "romaji": "ni ho n ji n",
+                    "translation": "Japanese people",
+                    "audioName": "nihonjin.mp3"
                 }
             ]
         }
