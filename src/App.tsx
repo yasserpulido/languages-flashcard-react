@@ -2,73 +2,7 @@ import { useRef } from "react";
 import { Control, Flashcard, Modal } from "./components";
 import { useDictionary } from "./hooks/use-dictionary";
 import { ModalAuthMethods } from "./types";
-
-const SYLLABARY_GROUP_OPTIONS = [
-  {
-    value: "ALL",
-    label: "All",
-  },
-  {
-    value: "VOWEL",
-    label: "vowel",
-  },
-  {
-    value: "K",
-    label: "K",
-  },
-  {
-    value: "S",
-    label: "S",
-  },
-  {
-    value: "T",
-    label: "T",
-  },
-  {
-    value: "N",
-    label: "N",
-  },
-  {
-    value: "H",
-    label: "H",
-  },
-  {
-    value: "M",
-    label: "M",
-  },
-  {
-    value: "Y",
-    label: "Y",
-  },
-  {
-    value: "R",
-    label: "R",
-  },
-  {
-    value: "W",
-    label: "W",
-  },
-  {
-    value: "G",
-    label: "G",
-  },
-  {
-    value: "Z",
-    label: "Z",
-  },
-  {
-    value: "D",
-    label: "D",
-  },
-  {
-    value: "B",
-    label: "B",
-  },
-  {
-    value: "P",
-    label: "P",
-  },
-];
+import { SYLLABARY_GROUP_OPTIONS } from "./constants";
 
 function App() {
   const modal = useRef<ModalAuthMethods>(null);
