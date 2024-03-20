@@ -952,6 +952,76 @@
                     "romaji": "ni ho n ji n",
                     "translation": "Japanese people",
                     "audioName": "nihonjin.mp3"
+                },
+                {
+                    "id": 32,
+                    "word": "あい",
+                    "romaji": "a i",
+                    "translation": "love, affection",
+                    "audioName": "ai.mp3"
+                },
+                {
+                    "id": 33,
+                    "word": "え",
+                    "romaji": "e",
+                    "translation": "picture, drawing",
+                    "audioName": "e.mp3"
+                },
+                {
+                    "id": 34,
+                    "word": "いえ",
+                    "romaji": "i e",
+                    "translation": "house, home",
+                    "audioName": "ie.mp3"
+                },
+                {
+                    "id": 35,
+                    "word": "いい",
+                    "romaji": "i i",
+                    "translation": "good, nice, fine",
+                    "audioName": "ii.mp3"
+                },
+                {
+                    "id": 36,
+                    "word": "かお",
+                    "romaji": "ka o",
+                    "translation": "face",
+                    "audioName": "kao.mp3"
+                },
+                {
+                    "id": 37,
+                    "word": "えき",
+                    "romaji": "e ki",
+                    "translation": "train station",
+                    "audioName": "eki.mp3"
+                },
+                {
+                    "id": 38,
+                    "word": "いく",
+                    "romaji": "i ku",
+                    "translation": "to go",
+                    "audioName": "iku.mp3"
+                },
+                {
+                    "id": 39,
+                    "word": "くうこう",
+                    "romaji": "ku u ko u",
+                    "translation": "airport",
+                    "audioName": "kuukou.mp3"
+                },
+                {
+                    "id": 40,
+                    "word": "こい",
+                    "romaji": "ko i",
+                    "translation": "love or carp fish",
+                    "audioName": "koi.mp3"
+                },
+                {
+                    "id": 41,
+                    "word": "いけ",
+                    "romaji": "i ke",
+                    "translation": "pond",
+                    "audioName": "ike.mp3"
                 }
             ]
         }

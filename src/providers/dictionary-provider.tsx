@@ -169,8 +169,8 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
 
       const dictionaryShuffled = shuffleArray([...japanese.dictionary]);
 
-      if (dictionaryShuffled.length > 5) {
-        dictionaryShuffled.length = 5;
+      if (dictionaryShuffled.length > 10) {
+        dictionaryShuffled.length = 10;
       }
 
       setMaze(dictionaryShuffled);
