@@ -17,6 +17,8 @@ export type Dictionary = {
   romaji: string;
   translation: string;
   audioName: string;
+  category: string;
+  logographic: string;
 };
 
 export type Syllabary = {
@@ -32,7 +34,7 @@ export type Syllable = {
   type: string;
 };
 
-export type ModalAuthMethods = {
+export type ModalMethods = {
   open: () => void;
   close: () => void;
 };

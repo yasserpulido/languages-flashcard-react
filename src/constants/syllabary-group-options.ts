@@ -1,110 +1,110 @@
 export const SYLLABARY_GROUP_OPTIONS = [
   {
-    value: "ALL",
+    value: "all",
     label: "ALL",
   },
   {
-    value: "VOWEL",
+    value: "vowel",
     label: "VOWEL",
   },
   {
-    value: "K",
+    value: "k",
     label: "K",
   },
   {
-    value: "S",
+    value: "s",
     label: "S",
   },
   {
-    value: "T",
+    value: "t",
     label: "T",
   },
   {
-    value: "N",
+    value: "n",
     label: "N",
   },
   {
-    value: "H",
+    value: "h",
     label: "H",
   },
   {
-    value: "M",
+    value: "m",
     label: "M",
   },
   {
-    value: "Y",
+    value: "y",
     label: "Y",
   },
   {
-    value: "R",
+    value: "r",
     label: "R",
   },
   {
-    value: "W",
+    value: "w",
     label: "W",
   },
   {
-    value: "G",
+    value: "g",
     label: "G",
   },
   {
-    value: "Z",
+    value: "z",
     label: "Z",
   },
   {
-    value: "D",
+    value: "d",
     label: "D",
   },
   {
-    value: "B",
+    value: "b",
     label: "B",
   },
   {
-    value: "P",
+    value: "p",
     label: "P",
   },
   {
-    value: "KY",
+    value: "ky",
     label: "KY",
   },
   {
-    value: "SH",
+    value: "sh",
     label: "SH",
   },
   {
-    value: "CH",
+    value: "ch",
     label: "CH",
   },
   {
-    value: "NY",
+    value: "ny",
     label: "NY",
   },
   {
-    value: "HY",
+    value: "hy",
     label: "HY",
   },
   {
-    value: "MY",
+    value: "my",
     label: "MY",
   },
   {
-    value: "RY",
+    value: "ry",
     label: "RY",
   },
   {
-    value: "GY",
+    value: "gy",
     label: "GY",
   },
   {
-    value: "J",
+    value: "j",
     label: "J",
   },
   {
-    value: "BY",
+    value: "by",
     label: "BY",
   },
   {
-    value: "PY",
+    value: "py",
     label: "PY",
   },
 ];

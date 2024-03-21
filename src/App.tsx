@@ -1,11 +1,13 @@
 import { useRef } from "react";
-import { Control, Flashcard, Modal } from "./components";
+import { Control, DictionaryQuizConfig, Flashcard } from "./components";
+import { SyllabaryQuizConfig } from "./components/syllabary-quiz-config";
 import { useDictionary } from "./hooks/use-dictionary";
-import { ModalAuthMethods } from "./types";
-import { SYLLABARY_GROUP_OPTIONS } from "./constants";
+import { ModalMethods } from "./types";
 
 function App() {
-  const modal = useRef<ModalAuthMethods>(null);
+  const syllabaryQuizConfigModal = useRef<ModalMethods>(null);
+  const dictionaryQuizConfigModal = useRef<ModalMethods>(null);
+
   const {
     currentFlashcard,
     stats,
@@ -15,101 +17,10 @@ function App() {
     resetQuiz,
   } = useDictionary();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    const syllabary = formData.get("syllabary") as string;
-    const group = formData.get("group") as string;
-    const sort = formData.get("sort") as string;
-    const writing = formData.get("writing") !== null;
-
-    startQuiz({
-      type: "syllabary",
-      config: { syllabary, group, sort },
-      writing,
-    });
-
-    if (modal.current) {
-      modal.current.close();
-    }
-
-    form.reset();
-  };
-
   return (
     <div className="min-h-screen h-full flex flex-col bg-white p-4">
-      <Modal ref={modal}>
-        <h1 className="text-2xl font-bold text-gray-800 text-center">
-          Syllabary Quiz
-        </h1>
-        <hr className="my-4" />
-        <p className="text-gray-800 text-center">
-          Select the correct syllabary and group.
-        </p>
-        <form className="mt-4" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="syllabary" className="block text-gray-800">
-              Syllabary:
-            </label>
-          </div>
-          <div className="flex gap-4">
-            <div className="flex items-center">
-              <input
-                type="radio"
-                name="syllabary"
-                value="hiragana"
-                defaultChecked
-              />
-              <label className="ml-2">Hiragana</label>
-            </div>
-            <div className="flex items-center">
-              <input type="radio" name="syllabary" value="katakana" disabled />
-              <label className="ml-2">Katakana</label>
-            </div>
-          </div>
-          <div className="mt-4">
-            <label htmlFor="group" className="block text-gray-800">
-              Group:
-            </label>
-            <select name="group" className="block w-full">
-              {SYLLABARY_GROUP_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="mt-4">
-            <div className="flex items-center">
-              <input type="radio" name="sort" value="ordered" defaultChecked />
-              <label className="ml-2">Ordered</label>
-            </div>
-            <div className="flex items-center">
-              <input type="radio" name="sort" value="random" />
-              <label className="ml-2">Random</label>
-            </div>
-          </div>
-          <div className="mt-4">
-            <div className="flex items-center">
-              <input type="checkbox" name="writing" value="writing" />
-              <label className="ml-2" htmlFor="writing">
-                {" "}
-                Is writing quiz?
-              </label>
-            </div>
-          </div>
-          <hr className="my-4" />
-          <div className="mt-4 text-right">
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded font-bold shadow-sm shadow-black"
-            >
-              Start Quiz
-            </button>
-          </div>
-        </form>
-      </Modal>
+      <SyllabaryQuizConfig ref={syllabaryQuizConfigModal} />
+      <DictionaryQuizConfig ref={dictionaryQuizConfigModal} />
       <div className="w-full h-full flex flex-col gap-8 justify-center items-center">
         {showMenu ? (
           <>
@@ -120,8 +31,8 @@ function App() {
             <div className="flex gap-4">
               <button
                 onClick={() => {
-                  if (modal.current) {
-                    modal.current.open();
+                  if (syllabaryQuizConfigModal.current) {
+                    syllabaryQuizConfigModal.current.open();
                   }
                 }}
                 className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded font-bold shadow-sm shadow-black animate-fade-up"
@@ -129,7 +40,11 @@ function App() {
                 Syllabary Quiz
               </button>
               <button
-                onClick={() => startQuiz({ type: "dictionary" })}
+                onClick={() => {
+                  if (dictionaryQuizConfigModal.current) {
+                    dictionaryQuizConfigModal.current.open();
+                  }
+                }}
                 className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded font-bold shadow-sm shadow-black animate-fade-up"
               >
                 Dictionary Quiz

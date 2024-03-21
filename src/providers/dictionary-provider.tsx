@@ -6,46 +6,52 @@ type Stats = {
   hard: number[];
 };
 
-type Quiz = {
-  type: "syllabary" | "dictionary";
-  config?: {
-    syllabary: string;
-    group: string;
-    sort: string;
-  };
-  writing?: boolean;
+type SyllabaryQuizConfig = {
+  syllabary: string;
+  group: string;
+  sort: string;
+  writing: boolean;
+};
+
+type DictionaryQuizConfig = {
+  logographic: string;
+  category: string;
 };
 
 type DictionaryContextType = {
   currentFlashcard: Dictionary | Syllable | null;
-  showFlashcard: boolean;
-  stats: Stats;
-  showMenu: boolean;
+  dictionaryCategories: string[];
   isDictionaryQuiz: boolean;
   isWritingQuiz: boolean;
-  resetQuiz: () => void;
-  returnToMenu: () => void;
-  startQuiz: (quizConfig: Quiz) => void;
+  showFlashcard: boolean;
+  showMenu: boolean;
+  stats: Stats;
   markEasy: (id: number) => void;
   markHard: (id: number) => void;
+  resetQuiz: () => void;
+  returnToMenu: () => void;
+  startDictionaryQuiz: (quizConfig: DictionaryQuizConfig) => void;
+  startSyllabaryQuiz: (quizConfig: SyllabaryQuizConfig) => void;
   toggleFlashcard: () => void;
 };
 
 export const DictionaryContext = createContext<DictionaryContextType>({
   currentFlashcard: null,
+  dictionaryCategories: [],
+  isDictionaryQuiz: false,
+  isWritingQuiz: false,
   showFlashcard: false,
+  showMenu: false,
   stats: {
     easy: [],
     hard: [],
   },
-  showMenu: false,
-  isDictionaryQuiz: false,
-  isWritingQuiz: false,
-  resetQuiz: () => {},
-  returnToMenu: () => {},
-  startQuiz: () => {},
   markEasy: () => {},
   markHard: () => {},
+  resetQuiz: () => {},
+  returnToMenu: () => {},
+  startDictionaryQuiz: () => {},
+  startSyllabaryQuiz: () => {},
   toggleFlashcard: () => {},
 });
 
@@ -61,7 +67,13 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   const [showMenu, setShowMenu] = useState(true);
   const [isDictionaryQuiz, setIsDictionaryQuiz] = useState(false);
   const [isWritingQuiz, setIsWritingQuiz] = useState(false);
-  const [quizConfig, setQuizConfig] = useState<Quiz | null>(null);
+  const [syllabaryQuizConfig, setSyllabaryQuizConfig] =
+    useState<SyllabaryQuizConfig | null>(null);
+  const [dictionaryQuizConfig, setDictionaryQuizConfig] =
+    useState<DictionaryQuizConfig | null>(null);
+  const [dictionaryCategories, setDictionaryCategories] = useState<string[]>(
+    []
+  );
 
   useEffect(() => {
     const fetchDictorionary = async () => {
@@ -69,6 +81,14 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
       const { languages } = await response.json();
 
       setJapanese(languages.japanese);
+
+      const categories = languages.japanese.dictionary.map(
+        (d: Dictionary) => d.category
+      );
+
+      const uniqueCategories = Array.from(new Set(categories));
+
+      setDictionaryCategories(uniqueCategories as string[]);
     };
 
     fetchDictorionary();
@@ -140,44 +160,48 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     return array;
   };
 
-  const startQuiz = (quizConfig: Quiz) => {
-    setQuizConfig(quizConfig)
+  const startSyllabaryQuiz = (quizConfig: SyllabaryQuizConfig) => {
+    setSyllabaryQuizConfig(quizConfig);
 
-    const isDictionaryQuiz = quizConfig.type === "dictionary";
+    const { syllabary, group, sort } = quizConfig;
 
-    if (!isDictionaryQuiz && quizConfig.config) {
-      const { syllabary, group, sort } = quizConfig.config;
+    const syllabaryList = japanese?.syllabary
+      .map((s) => s[syllabary as keyof Syllabary])
+      .flat();
 
-      const syllabaryList = japanese?.syllabary
-        .map((s) => s[syllabary as keyof Syllabary])
-        .flat();
+    if (!syllabaryList) return;
 
-      if (!syllabaryList) return;
+    const result =
+      group === "ALL"
+        ? syllabaryList
+        : syllabaryList.filter((s) => s.type === group.toLowerCase());
 
-      const result =
-        group === "ALL"
-          ? syllabaryList
-          : syllabaryList.filter((s) => s.type === group.toLowerCase());
+    setMaze(sort === "random" ? shuffleArray(result) : result);
+    setStats({ easy: [], hard: [] });
+    setShowMenu(false);
+    setIsDictionaryQuiz(false);
+    setIsWritingQuiz(quizConfig.writing || false);
+  };
 
-      setMaze(sort === "random" ? shuffleArray(result) : result);
-      setStats({ easy: [], hard: [] });
-      setShowMenu(false);
-      setIsDictionaryQuiz(false);
-      setIsWritingQuiz(quizConfig.writing || false);
-    } else {
-      if (!japanese) return;
+  const startDictionaryQuiz = (quizConfig: DictionaryQuizConfig) => {
+    setDictionaryQuizConfig(quizConfig);
 
-      const dictionaryShuffled = shuffleArray([...japanese.dictionary]);
+    if (!japanese) return;
 
-      if (dictionaryShuffled.length > 10) {
-        dictionaryShuffled.length = 10;
-      }
+    const { logographic, category } = quizConfig;
 
-      setMaze(dictionaryShuffled);
-      setStats({ easy: [], hard: [] });
-      setShowMenu(false);
-      setIsDictionaryQuiz(true);
-    }
+    const dictionaryList =
+      category === "All"
+        ? japanese.dictionary
+        : japanese.dictionary.filter((d) => d.category === category);
+
+    const result = dictionaryList.filter((d) => d.logographic === logographic);
+
+    setMaze(shuffleArray(result));
+    setStats({ easy: [], hard: [] });
+    setShowMenu(false);
+    setIsDictionaryQuiz(true);
+    setIsWritingQuiz(false);
   };
 
   const returnToMenu = () => {
@@ -186,26 +210,35 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     setIsDictionaryQuiz(false);
     setIsWritingQuiz(false);
     setShowFlashcard(false);
+    setStats({ easy: [], hard: [] });
+    setDictionaryQuizConfig(null);
+    setSyllabaryQuizConfig(null);
   };
 
   const resetQuiz = () => {
-    startQuiz(quizConfig as Quiz);
-  }
+    if (isDictionaryQuiz) {
+      startDictionaryQuiz(dictionaryQuizConfig as DictionaryQuizConfig);
+    } else if (syllabaryQuizConfig) {
+      startSyllabaryQuiz(syllabaryQuizConfig);
+    }
+  };
 
   return (
     <DictionaryContext.Provider
       value={{
         currentFlashcard: maze[0],
-        showFlashcard,
-        stats,
-        showMenu,
+        dictionaryCategories,
         isDictionaryQuiz,
         isWritingQuiz,
-        resetQuiz,
-        returnToMenu,
-        startQuiz,
+        showFlashcard,
+        showMenu,
+        stats,
         markEasy,
         markHard,
+        resetQuiz,
+        returnToMenu,
+        startDictionaryQuiz,
+        startSyllabaryQuiz,
         toggleFlashcard,
       }}
     >
