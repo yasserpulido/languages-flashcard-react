@@ -8,14 +8,8 @@ function App() {
   const syllabaryQuizConfigModal = useRef<ModalMethods>(null);
   const dictionaryQuizConfigModal = useRef<ModalMethods>(null);
 
-  const {
-    currentFlashcard,
-    stats,
-    showMenu,
-    startQuiz,
-    returnToMenu,
-    resetQuiz,
-  } = useDictionary();
+  const { currentFlashcard, stats, showMenu, returnToMenu, resetQuiz } =
+    useDictionary();
 
   return (
     <div className="min-h-screen h-full flex flex-col bg-white p-4">
