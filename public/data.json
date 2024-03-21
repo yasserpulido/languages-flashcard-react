@@ -741,287 +741,477 @@
                     "word": "おちゃ",
                     "romaji": "o cha",
                     "translation": "green teas, green tea, tea",
-                    "audioName": "ocha.mp3"
+                    "audioName": "ocha.mp3",
+                    "type": "noun",
+                    "category": "food and drink"
                 },
                 {
                     "id": 2,
                     "word": "ください",
                     "romaji": "ku da sa i",
                     "translation": "please",
-                    "audioName": "kudasai.mp3"
+                    "audioName": "kudasai.mp3",
+                    "type": "verb",
+                    "category": "politeness"
                 },
                 {
                     "id": 3,
                     "word": "すし",
                     "romaji": "su shi",
                     "translation": "sushi",
-                    "audioName": "sushi.mp3"
+                    "audioName": "sushi.mp3",
+                    "type": "noun",
+                    "category": "food and drink"
                 },
                 {
                     "id": 4,
                     "word": "ごはん",
                     "romaji": "go ha n",
                     "translation": "rice, meal, meals",
-                    "audioName": "gohan.mp3"
+                    "audioName": "gohan.mp3",
+                    "type": "noun",
+                    "category": "food and drink"
                 },
                 {
                     "id": 5,
                     "word": "みず",
                     "romaji": "mi zu",
                     "translation": "water",
-                    "audioName": "mizu.mp3"
+                    "audioName": "mizu.mp3",
+                    "type": "noun",
+                    "category": "food and drink"
                 },
                 {
                     "id": 6,
                     "word": "と",
                     "romaji": "to",
                     "translation": "and, that, door",
-                    "audioName": "to.mp3"
+                    "audioName": "to.mp3",
+                    "type": "particle",
+                    "category": "grammar"
                 },
                 {
                     "id": 7,
                     "word": "いしゃ",
                     "romaji": "i sha",
                     "translation": "doctor, doctors",
-                    "audioName": "isha.mp3"
+                    "audioName": "isha.mp3",
+                    "type": "noun",
+                    "category": "people"
                 },
                 {
                     "id": 8,
                     "word": "せんせい",
                     "romaji": "se n se i",
                     "translation": "teacher, Professor, teachers",
-                    "audioName": "sensei.mp3"
+                    "audioName": "sensei.mp3",
+                    "type": "noun",
+                    "category": "people"
                 },
                 {
                     "id": 9,
                     "word": "やさしい",
                     "romaji": "ya sa shi i",
                     "translation": "kind, easy, nice",
-                    "audioName": "yasashii.mp3"
+                    "audioName": "yasashii.mp3",
+                    "type": "adjective",
+                    "category": "adjectives"
                 },
                 {
                     "id": 10,
                     "word": "べんごし",
                     "romaji": "be n go shi",
                     "translation": "lawyer, lawyers",
-                    "audioName": "bengoshi.mp3"
+                    "audioName": "bengoshi.mp3",
+                    "type": "noun",
+                    "category": "people"
                 },
                 {
                     "id": 11,
                     "word": "かっこいい",
                     "romaji": "ka kko i i",
                     "translation": "cool, good-looking, stylish",
-                    "audioName": "kakkoii.mp3"
+                    "audioName": "kakkoii.mp3",
+                    "type": "adjective",
+                    "category": "adjectives"
                 },
                 {
                     "id": 12,
                     "word": "ひと",
                     "romaji": "hi to",
                     "translation": "person, people",
-                    "audioName": "hito.mp3"
+                    "audioName": "hito.mp3",
+                    "type": "noun",
+                    "category": "people"
                 },
                 {
                     "id": 13,
                     "word": "がくせい",
                     "romaji": "ga ku se i",
                     "translation": "student, students",
-                    "audioName": "gakusei.mp3"
+                    "audioName": "gakusei.mp3",
+                    "type": "noun",
+                    "category": "people"
                 },
                 {
                     "id": 14,
                     "word": "こんにちは",
                     "romaji": "ko n ni chi wa",
                     "translation": "hello, good afternoon",
-                    "audioName": "konnichiwa.mp3"
+                    "audioName": "konnichiwa.mp3",
+                    "type": "greeting",
+                    "category": "greetings"
                 },
                 {
                     "id": 15,
                     "word": "さん",
                     "romaji": "sa n",
                     "translation": "Mr., Mrs., Miss, Ms.",
-                    "audioName": "san.mp3"
+                    "audioName": "san.mp3",
+                    "type": "honorific",
+                    "category": "politeness"
                 },
                 {
                     "id": 16,
                     "word": "じゃあね",
                     "romaji": "ja a ne",
                     "translation": "see you, goodbye",
-                    "audioName": "jaane.mp3"
+                    "audioName": "jaane.mp3",
+                    "type": "greeting",
+                    "category": "greetings"
                 },
                 {
                     "id": 17,
                     "word": "は",
                     "romaji": "wa",
                     "translation": "topic marker particle",
-                    "audioName": "wa.mp3"
+                    "audioName": "wa.mp3",
+                    "type": "particle",
+                    "category": "grammar"
                 },
                 {
                     "id": 18,
                     "word": "これ",
                     "romaji": "ko re",
                     "translation": "this",
-                    "audioName": "kore.mp3"
+                    "audioName": "kore.mp3",
+                    "type": "pronoun",
+                    "category": "grammar"
                 },
                 {
                     "id": 19,
                     "word": "それ",
                     "romaji": "so re",
                     "translation": "that",
-                    "audioName": "sore.mp3"
+                    "audioName": "sore.mp3",
+                    "type": "pronoun",
+                    "category": "grammar"
                 },
                 {
                     "id": 20,
                     "word": "はい",
                     "romaji": "ha i",
                     "translation": "yes",
-                    "audioName": "hai.mp3"
+                    "audioName": "hai.mp3",
+                    "type": "interjection",
+                    "category": "politeness"
                 },
                 {
                     "id": 21,
                     "word": "いいえ",
                     "romaji": "i i e",
                     "translation": "no",
-                    "audioName": "iie.mp3"
+                    "audioName": "iie.mp3",
+                    "type": "interjection",
+                    "category": "politeness"
                 },
                 {
                     "id": 22,
                     "word": "おいしい",
                     "romaji": "o i shi i",
                     "translation": "delicious, tasty, good",
-                    "audioName": "oishii.mp3"
+                    "audioName": "oishii.mp3",
+                    "type": "adjective",
+                    "category": "adjectives"
                 },
                 {
                     "id": 23,
                     "word": "おやすみなさい",
                     "romaji": "o ya su mi na sa i",
                     "translation": "good night",
-                    "audioName": "oyasuminasai.mp3"
+                    "audioName": "oyasuminasai.mp3",
+                    "type": "greeting",
+                    "category": "greetings"
                 },
                 {
                     "id": 24,
                     "word": "ありがとうございます",
                     "romaji": "a ri ga to u go za i ma su",
                     "translation": "thank you",
-                    "audioName": "arigatougozaimasu.mp3"
+                    "audioName": "arigatougozaimasu.mp3",
+                    "type": "greeting",
+                    "category": "greetings"
                 },
                 {
                     "id": 25,
                     "word": "すみません",
                     "romaji": "su mi ma se n",
                     "translation": "excuse me, I'm sorry",
-                    "audioName": "sumimasen.mp3"
+                    "audioName": "sumimasen.mp3",
+                    "type": "greeting",
+                    "category": "greetings"
                 },
                 {
                     "id": 26,
                     "word": "ごめんなさい",
                     "romaji": "go me n na sa i",
                     "translation": "I'm sorry",
-                    "audioName": "gomennasai.mp3"
+                    "audioName": "gomennasai.mp3",
+                    "type": "greeting",
+                    "category": "greetings"
                 },
                 {
                     "id": 27,
                     "word": "おはよう",
                     "romaji": "o ha yo u",
                     "translation": "good morning",
-                    "audioName": "ohayou.mp3"
+                    "audioName": "ohayou.mp3",
+                    "type": "greeting",
+                    "category": "greetings"
                 },
                 {
                     "id": 28,
                     "word": "おおきい",
                     "romaji": "o o ki i",
                     "translation": "big, large, great",
-                    "audioName": "ookii.mp3"
+                    "audioName": "ookii.mp3",
+                    "type": "adjective",
+                    "category": "adjectives"
                 },
                 {
                     "id": 29,
                     "word": "にほん",
                     "romaji": "ni ho n",
                     "translation": "Japan",
-                    "audioName": "nihon.mp3"
+                    "audioName": "nihon.mp3",
+                    "type": "noun",
+                    "category": "places"
                 },
                 {
                     "id": 30,
                     "word": "ちいさい",
                     "romaji": "chi i sa i",
                     "translation": "small, little",
-                    "audioName": "chiisai.mp3"
+                    "audioName": "chiisai.mp3",
+                    "type": "adjective",
+                    "category": "adjectives"
                 },
                 {
                     "id": 31,
                     "word": "にほんじん",
                     "romaji": "ni ho n ji n",
                     "translation": "Japanese people",
-                    "audioName": "nihonjin.mp3"
+                    "audioName": "nihonjin.mp3",
+                    "type": "noun",
+                    "category": "people"
                 },
                 {
                     "id": 32,
                     "word": "あい",
                     "romaji": "a i",
                     "translation": "love, affection",
-                    "audioName": "ai.mp3"
+                    "audioName": "ai.mp3",
+                    "type": "noun",
+                    "category": "feelings"
                 },
                 {
                     "id": 33,
                     "word": "え",
                     "romaji": "e",
                     "translation": "picture, drawing",
-                    "audioName": "e.mp3"
+                    "audioName": "e.mp3",
+                    "type": "noun",
+                    "category": "things"
                 },
                 {
                     "id": 34,
                     "word": "いえ",
                     "romaji": "i e",
                     "translation": "house, home",
-                    "audioName": "ie.mp3"
+                    "audioName": "ie.mp3",
+                    "type": "noun",
+                    "category": "places"
                 },
                 {
                     "id": 35,
                     "word": "いい",
                     "romaji": "i i",
                     "translation": "good, nice, fine",
-                    "audioName": "ii.mp3"
+                    "audioName": "ii.mp3",
+                    "type": "adjective",
+                    "category": "adjectives"
                 },
                 {
                     "id": 36,
                     "word": "かお",
                     "romaji": "ka o",
                     "translation": "face",
-                    "audioName": "kao.mp3"
+                    "audioName": "kao.mp3",
+                    "type": "noun",
+                    "category": "body parts"
                 },
                 {
                     "id": 37,
                     "word": "えき",
                     "romaji": "e ki",
                     "translation": "train station",
-                    "audioName": "eki.mp3"
+                    "audioName": "eki.mp3",
+                    "type": "noun",
+                    "category": "places"
                 },
                 {
                     "id": 38,
                     "word": "いく",
                     "romaji": "i ku",
                     "translation": "to go",
-                    "audioName": "iku.mp3"
+                    "audioName": "iku.mp3",
+                    "type": "verb",
+                    "category": "actions"
                 },
                 {
                     "id": 39,
                     "word": "くうこう",
                     "romaji": "ku u ko u",
                     "translation": "airport",
-                    "audioName": "kuukou.mp3"
+                    "audioName": "kuukou.mp3",
+                    "type": "noun",
+                    "category": "places"
                 },
                 {
                     "id": 40,
                     "word": "こい",
                     "romaji": "ko i",
                     "translation": "love or carp fish",
-                    "audioName": "koi.mp3"
+                    "audioName": "koi.mp3",
+                    "type": "noun",
+                    "category": "feelings"
                 },
                 {
                     "id": 41,
                     "word": "いけ",
                     "romaji": "i ke",
                     "translation": "pond",
-                    "audioName": "ike.mp3"
+                    "audioName": "ike.mp3",
+                    "type": "noun",
+                    "category": "places"
+                },
+                {
+                    "id": 42,
+                    "word": "さけ",
+                    "romaji": "sa ke",
+                    "translation": "salmon, sake, alcohol",
+                    "audioName": "sake.mp3",
+                    "type": "noun",
+                    "category": "food and drink"
+                },
+                {
+                    "id": 43,
+                    "word": "うし",
+                    "romaji": "u shi",
+                    "translation": "cow",
+                    "audioName": "ushi.mp3",
+                    "type": "noun",
+                    "category": "animals"
+                },
+                {
+                    "id": 44,
+                    "word": "あさ",
+                    "romaji": "a sa",
+                    "translation": "morning",
+                    "audioName": "asa.mp3",
+                    "type": "noun",
+                    "category": "time"
+                },
+                {
+                    "id": 45,
+                    "word": "すき",
+                    "romaji": "su ki",
+                    "translation": "to like (something)",
+                    "audioName": "suki.mp3",
+                    "type": "verb",
+                    "category": "actions"
+                },
+                {
+                    "id": 46,
+                    "word": "うそ",
+                    "romaji": "u so",
+                    "translation": "lie",
+                    "audioName": "uso.mp3",
+                    "type": "noun",
+                    "category": "feelings"
+                },
+                {
+                    "id": 47,
+                    "word": "かさ",
+                    "romaji": "ka sa",
+                    "translation": "umbrella",
+                    "audioName": "kasa.mp3",
+                    "type": "noun",
+                    "category": "things"
+                },
+                {
+                    "id": 48,
+                    "word": "せき",
+                    "romaji": "se ki",
+                    "translation": "char or to cough",
+                    "audioName": "seki.mp3",
+                    "type": "noun",
+                    "category": "things"
+                },
+                {
+                    "id": 49,
+                    "word": "おと",
+                    "romaji": "o to",
+                    "translation": "sound",
+                    "audioName": "oto.mp3",
+                    "type": "noun",
+                    "category": "things"
+                },
+                {
+                    "id": 50,
+                    "word": "いち",
+                    "romaji": "i chi",
+                    "translation": "one",
+                    "audioName": "ichi.mp3",
+                    "type": "number",
+                    "category": "numbers"
+                },
+                {
+                    "id": 51,
+                    "word": "ちち",
+                    "romaji": "chi chi",
+                    "translation": "father",
+                    "audioName": "chichi.mp3",
+                    "type": "noun",
+                    "category": "family"
+                },
+                {
+                    "id": 52,
+                    "word": "すてき",
+                    "romaji": "su te ki",
+                    "translation": "lovely, dreamy, beautiful",
+                    "audioName": "suteki.mp3",
+                    "type": "adjective",
+                    "category": "adjectives"
+                },
+                {
+                    "id": 53,
+                    "word": "くち",
+                    "romaji": "ku chi",
+                    "translation": "mouth",
+                    "audioName": "kuchi.mp3",
+                    "type": "noun",
+                    "category": "body parts"
                 }
             ]
         }
