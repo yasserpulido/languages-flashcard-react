@@ -3,6 +3,7 @@ import { Modal } from "../modal";
 import { ModalMethods } from "../../types";
 import { useDictionary } from "../../hooks";
 import { SYLLABARY_GROUP_OPTIONS } from "../../constants";
+import { Button } from "../button";
 
 const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
   const { startSyllabaryQuiz } = useDictionary();
@@ -111,12 +112,9 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
         </div>
         <hr className="my-4" />
         <div className="mt-4 text-right">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded font-bold shadow-sm shadow-black"
-          >
+          <Button type="submit" color="primary">
             Start Quiz
-          </button>
+          </Button>
         </div>
       </form>
     </Modal>

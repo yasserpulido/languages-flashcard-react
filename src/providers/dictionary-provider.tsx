@@ -172,7 +172,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     if (!syllabaryList) return;
 
     const result =
-      group === "ALL"
+      group === "all"
         ? syllabaryList
         : syllabaryList.filter((s) => s.type === group.toLowerCase());
 

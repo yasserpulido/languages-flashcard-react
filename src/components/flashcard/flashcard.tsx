@@ -1,15 +1,24 @@
-import { Volume } from "grommet-icons";
-import { useDictionary } from "../../hooks/use-dictionary";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 import { Dictionary, Syllable } from "../../types";
+import { ButtonRounded } from "../button-rounded";
+import { BackCard, FrontCard } from "./components";
+import { useDictionary } from "../../hooks";
 
-type Props = {
-  currentFlashcard: Dictionary | Syllable;
-};
+const Flashcard = () => {
+  const [animationClass, setAnimationClass] = useState("animate-fade");
+  const {
+    showFlashcard,
+    isDictionaryQuiz,
+    currentFlashcard,
+    markEasy,
+    markHard,
+    toggleFlashcard,
+  } = useDictionary();
 
-const Flashcard = ({ currentFlashcard }: Props) => {
-  const [animationClass, setAnimationClass] = useState("animate-rotate-y");
-  const { showFlashcard, isDictionaryQuiz, isWritingQuiz } = useDictionary();
+  if (currentFlashcard === null) {
+    return null;
+  }
 
   const playAudio = (audioName: string) => {
     const folder = isDictionaryQuiz ? "dictionary" : "syllabary";
@@ -17,69 +26,75 @@ const Flashcard = ({ currentFlashcard }: Props) => {
     audio.play();
   };
 
-  useEffect(() => {
-    setAnimationClass("");
-    const timeoutId = setTimeout(() => {
+  const forceReflow = (node: HTMLElement) => {
+    node.offsetWidth;
+  };
+
+  const handleFlip = () => {
+    toggleFlashcard();
+
+    if (animationClass !== "animate-rotate-y") {
       setAnimationClass("animate-rotate-y");
-    }, 10);
-
-    return () => clearTimeout(timeoutId);
-  }, [currentFlashcard]);
-
-  const handleFlashcardTop = () => {
-    if (isDictionaryQuiz) {
-      return (currentFlashcard as Dictionary).word;
-    } else if (isWritingQuiz) {
-      return (currentFlashcard as Syllable).romaji;
     } else {
-      return (currentFlashcard as Syllable).kana;
+      const flashcardElement = document.querySelector(
+        ".flashcard-border"
+      ) as HTMLElement;
+      if (flashcardElement) {
+        forceReflow(flashcardElement);
+        setAnimationClass("");
+        setTimeout(() => setAnimationClass("animate-rotate-y"), 10);
+      }
     }
   };
 
-  const handleFlashcardBottom = () => {
-    if (isDictionaryQuiz) {
-      return (currentFlashcard as Dictionary).translation;
-    } else if (isWritingQuiz) {
-      return (
-        <span className="text-4xl">{(currentFlashcard as Syllable).kana}</span>
-      );
+  const handleClickLeft = () => {
+    if (animationClass === "animate-fade-left") {
+      setAnimationClass("");
+      setTimeout(() => {
+        setAnimationClass("animate-fade-left");
+        markHard(currentFlashcard.id);
+      }, 10);
     } else {
-      return (currentFlashcard as Syllable).romaji;
+      setAnimationClass("animate-fade-left");
+      markHard(currentFlashcard.id);
+    }
+  };
+
+  const handleClickRight = () => {
+    if (animationClass === "animate-fade-right") {
+      setAnimationClass("");
+      setTimeout(() => {
+        setAnimationClass("animate-fade-right");
+        markEasy(currentFlashcard.id);
+      }, 10);
+    } else {
+      setAnimationClass("animate-fade-right");
+      markEasy(currentFlashcard.id);
     }
   };
 
   return (
-    <div
-      className={`bg-blue-500 h-96 max-w-96 p-4 w-full rounded-lg flex flex-col justify-evenly items-center shadow-md shadow-black ${animationClass}`}
-    >
-      <div
-        className={`font-bold ${
-          isDictionaryQuiz || isWritingQuiz ? "text-xl" : "text-5xl"
-        } text-white flex flex-col items-center gap-1`}
-      >
-        <div className="flex gap-2 items-center">
-          <span
-            onClick={() => playAudio(currentFlashcard.audioName)}
-            className="cursor-pointer"
-          >
-            <Volume color="white" size="medium" />
-          </span>
-          {handleFlashcardTop()}
+    <div className="flex flex-col items-center gap-4 w-full">
+      <ButtonRounded
+        icon="sound"
+        onClick={() => {
+          if (isDictionaryQuiz) {
+            playAudio((currentFlashcard as Dictionary).audioName);
+          } else {
+            playAudio((currentFlashcard as Syllable).audioName);
+          }
+        }}
+      />
+      <div className="flex items-center gap-6 w-full justify-center">
+        <ButtonRounded icon="left" onClick={handleClickLeft} />
+        <div
+          className={`z-10 flashcard-border border-4 p-2 text-wrap rounded-2xl bg-gray-200 sm:min-h-80 min-h-60 sm:w-60 w-48 flex items-center justify-center ${animationClass}`}
+        >
+          {showFlashcard ? <BackCard /> : <FrontCard />}
         </div>
-        {isDictionaryQuiz && (
-          <span className="text-sm text-gray-200">
-            ({currentFlashcard.romaji})
-          </span>
-        )}
+        <ButtonRounded icon="right" onClick={handleClickRight} />
       </div>
-      <hr className="w-3/4" />
-      <div className="text-white">
-        <div className="text-base text-gray-200">
-          {showFlashcard
-            ? handleFlashcardBottom()
-            : "Click on show to see translation"}
-        </div>
-      </div>
+      <ButtonRounded icon="flip" onClick={handleFlip} />
     </div>
   );
 };

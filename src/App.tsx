@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Control, DictionaryQuizConfig, Flashcard } from "./components";
+import { Button, DictionaryQuizConfig, Flashcard } from "./components";
 import { SyllabaryQuizConfig } from "./components/syllabary-quiz-config";
 import { useDictionary } from "./hooks/use-dictionary";
 import { ModalMethods } from "./types";
@@ -23,26 +23,26 @@ function App() {
               Japanese Flashcards
             </h1>
             <div className="flex gap-4">
-              <button
+              <Button
                 onClick={() => {
                   if (syllabaryQuizConfigModal.current) {
                     syllabaryQuizConfigModal.current.open();
                   }
                 }}
-                className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded font-bold shadow-sm shadow-black animate-fade-up"
+                color="primary"
               >
                 Syllabary Quiz
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={() => {
                   if (dictionaryQuizConfigModal.current) {
                     dictionaryQuizConfigModal.current.open();
                   }
                 }}
-                className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded font-bold shadow-sm shadow-black animate-fade-up"
+                color="primary"
               >
                 Dictionary Quiz
-              </button>
+              </Button>
             </div>
           </>
         ) : (
@@ -56,21 +56,15 @@ function App() {
               </span>
             </div>
             {currentFlashcard ? (
-              <>
-                <Flashcard currentFlashcard={currentFlashcard} />
-                <Control />
-              </>
+              <Flashcard />
             ) : (
               <>
                 <h1 className="text-4xl font-bold text-gray-800">
                   Quiz Complete!
                 </h1>
-                <button
-                  onClick={resetQuiz}
-                  className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded font-bold shadow-sm shadow-black"
-                >
+                <Button onClick={resetQuiz} color="primary">
                   Reset Quiz
-                </button>
+                </Button>
               </>
             )}
 

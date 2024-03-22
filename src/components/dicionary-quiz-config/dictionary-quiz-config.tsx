@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import { Modal } from "../modal";
 import { ModalMethods } from "../../types";
 import { useDictionary } from "../../hooks";
+import { Button } from "../button";
 
 const DictionaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
   const { dictionaryCategories, startDictionaryQuiz } = useDictionary();
@@ -95,12 +96,9 @@ const DictionaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
         </div>
         <hr className="my-4" />
         <div className="mt-4 text-right">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded font-bold shadow-sm shadow-black"
-          >
+          <Button color="primary" type="submit">
             Start Quiz
-          </button>
+          </Button>
         </div>
       </form>
     </Modal>
