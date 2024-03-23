@@ -1,21 +1,34 @@
 import { useRef } from "react";
-import { Button, DictionaryQuizConfig, Flashcard } from "./components";
-import { SyllabaryQuizConfig } from "./components/syllabary-quiz-config";
-import { useDictionary } from "./hooks/use-dictionary";
-import { ModalMethods } from "./types";
 import { CircleInformation } from "grommet-icons";
+
+import {
+  Button,
+  DictionaryQuizConfig,
+  Flashcard,
+  Settings,
+  SyllabaryQuizConfig,
+} from "./components";
+import { useDictionary } from "./hooks";
+import { ModalMethods } from "./types";
 
 function App() {
   const syllabaryQuizConfigModal = useRef<ModalMethods>(null);
   const dictionaryQuizConfigModal = useRef<ModalMethods>(null);
+  const settingsModal = useRef<ModalMethods>(null);
 
-  const { currentFlashcard, stats, showMenu, returnToMenu } =
-    useDictionary();
+  const { currentFlashcard, showMenu, stats, returnToMenu } = useDictionary();
+
+  const isMobile = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  };
 
   return (
-    <div className="min-h-screen h-full flex flex-col bg-white p-4">
+    <div className="min-h-screen h-full flex flex-col bg-white p-4 sm:w-2/5 w-full m-auto">
       <SyllabaryQuizConfig ref={syllabaryQuizConfigModal} />
       <DictionaryQuizConfig ref={dictionaryQuizConfigModal} />
+      <Settings ref={settingsModal} />
       <div className="w-full h-full flex flex-col gap-8 justify-center items-center">
         {showMenu ? (
           <>
@@ -45,6 +58,20 @@ function App() {
                 Dictionary Quiz
               </Button>
             </div>
+            {!isMobile() ? (
+              <button
+                onClick={() => {
+                  if (settingsModal.current) {
+                    settingsModal.current.open();
+                  }
+                }}
+                className="text-base text-black"
+              >
+                Settings
+              </button>
+            ) : (
+              <p>Settings are not available on mobile devices.</p>
+            )}
           </>
         ) : (
           <>

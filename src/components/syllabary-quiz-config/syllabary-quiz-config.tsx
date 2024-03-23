@@ -1,4 +1,5 @@
 import { forwardRef, useState } from "react";
+
 import { Modal } from "../modal";
 import { ModalMethods } from "../../types";
 import { useDictionary } from "../../hooks";

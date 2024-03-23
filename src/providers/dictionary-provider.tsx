@@ -30,6 +30,12 @@ type DictionaryQuizConfig = {
   onlyHard: boolean;
 };
 
+type ResponseMessage = {
+  show: boolean;
+  type: "error" | "success";
+  message: string;
+};
+
 type DictionaryContextType = {
   currentFlashcard: Dictionary | Syllable | null;
   dictionaryCategories: string[];
@@ -41,6 +47,10 @@ type DictionaryContextType = {
   userData: UserData;
   dictionary: Dictionary[];
   syllabary: Syllabary;
+  responseMessage: ResponseMessage;
+  resetResponseMessage: () => void;
+  uploadJson: () => void;
+  downloadJson: () => void;
   markDifficulty: (id: number, isHard: boolean) => void;
   returnToMenu: () => void;
   startDictionaryQuiz: (quizConfig: DictionaryQuizConfig) => void;
@@ -75,6 +85,14 @@ export const DictionaryContext = createContext<DictionaryContextType>({
     hiragana: [],
     katakana: [],
   },
+  responseMessage: {
+    show: false,
+    type: "success",
+    message: "",
+  },
+  resetResponseMessage: () => {},
+  uploadJson: () => {},
+  downloadJson: () => {},
   markDifficulty: () => {},
   returnToMenu: () => {},
   startDictionaryQuiz: () => {},
@@ -101,6 +119,11 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   const [dictionaryCategories, setDictionaryCategories] = useState<string[]>(
     []
   );
+  const [responseMessage, setResponseMessage] = useState<ResponseMessage>({
+    show: false,
+    type: "success",
+    message: "",
+  });
 
   useEffect(() => {
     const fetchDictorionary = async () => {
@@ -287,24 +310,123 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     setShowFlashcard(false);
   };
 
+  const isValidUserData = (obj: unknown): obj is UserData => {
+    const hasRequiredProps = (o: object): o is UserData =>
+      "syllabary" in o &&
+      "dictionary" in o &&
+      "lastPlayed" in o &&
+      typeof o["syllabary"] === "object" &&
+      typeof o["dictionary"] === "object" &&
+      typeof o["lastPlayed"] === "string";
+
+    const hasValidSyllabary = (o: UserData) =>
+      Array.isArray(o.syllabary.hiraganaHardCardIds) &&
+      o.syllabary.hiraganaHardCardIds.every((id) => typeof id === "number");
+
+    const hasValidDictionary = (o: UserData) =>
+      Array.isArray(o.dictionary.hardCardsId) &&
+      o.dictionary.hardCardsId.every((id) => typeof id === "number");
+
+    return (
+      obj !== null &&
+      typeof obj === "object" &&
+      hasRequiredProps(obj) &&
+      hasValidSyllabary(obj) &&
+      hasValidDictionary(obj)
+    );
+  };
+
+  const downloadJson = () => {
+    const element = document.createElement("a");
+    const file = new Blob([JSON.stringify(userData)], {
+      type: "application/json",
+    });
+    element.href = URL.createObjectURL(file);
+    element.download = "userData.json";
+    document.body.appendChild(element);
+    element.click();
+  };
+
+  const uploadJson = () => {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = ".json";
+
+    fileInput.click();
+
+    fileInput.onchange = (event) => {
+      const input = event.target as HTMLInputElement;
+
+      if (input && input.files) {
+        const file = input.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const content = e.target?.result;
+
+            try {
+              const parsed = JSON.parse(content as string);
+
+              if (isValidUserData(parsed)) {
+                setUserData(parsed);
+                localStorage.setItem("userData", JSON.stringify(parsed));
+                setResponseMessage({
+                  show: true,
+                  type: "success",
+                  message: "Progress data uploaded successfully.",
+                });
+              } else {
+                setResponseMessage({
+                  show: true,
+                  type: "error",
+                  message:
+                    "The content of the file is not a valid progress data JSON.",
+                });
+              }
+            } catch (error) {
+              setResponseMessage({
+                show: true,
+                type: "error",
+                message: "Error parsing the uploaded file.",
+              });
+            }
+          };
+          reader.readAsText(file);
+        }
+      }
+    };
+  };
+
+  const resetResponseMessage = () => {
+    setResponseMessage({
+      show: false,
+      type: "success",
+      message: "",
+    });
+  };
+
   return (
     <DictionaryContext.Provider
       value={{
         currentFlashcard: maze[0],
+        dictionary: japanese?.dictionary || [],
         dictionaryCategories,
         isDictionaryQuiz,
         isWritingQuiz,
         showFlashcard,
         showMenu,
         stats,
-        userData,
-        dictionary: japanese?.dictionary || [],
         syllabary: japanese?.syllabary || { hiragana: [], katakana: [] },
+        userData,
+        responseMessage,
+        resetResponseMessage,
+        downloadJson,
         markDifficulty,
         returnToMenu,
         startDictionaryQuiz,
         startSyllabaryQuiz,
         toggleFlashcard,
+        uploadJson,
       }}
     >
       {children}

@@ -1,12 +1,15 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
+
 import { ModalMethods } from "../../types";
+import { useDictionary } from "../../hooks";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const Modal = forwardRef<ModalMethods, Props>(({ children }, ref) => {
+  const { resetResponseMessage } = useDictionary();
   const dialog = useRef<HTMLDialogElement | null>(null);
   const content = useRef<HTMLDivElement | null>(null);
   const modal = document.getElementById("modal");
@@ -23,6 +26,7 @@ const Modal = forwardRef<ModalMethods, Props>(({ children }, ref) => {
       if (dialog && "current" in dialog && dialog.current) {
         dialog.current.close();
       }
+      resetResponseMessage();
     },
   }));
 

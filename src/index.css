@@ -45,3 +45,8 @@ body {
 .btn-rounded-warning svg:hover {
   stroke: rgb(133 77 14);
 }
+
+.btn-border-file {
+  border-color: rgb(31 41 55);
+  box-shadow: 0 4px 0 rgb(31 41 55);
+}
