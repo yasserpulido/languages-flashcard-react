@@ -11,8 +11,7 @@ const Flashcard = () => {
     showFlashcard,
     isDictionaryQuiz,
     currentFlashcard,
-    markEasy,
-    markHard,
+    markDifficulty,
     toggleFlashcard,
   } = useDictionary();
 
@@ -52,11 +51,11 @@ const Flashcard = () => {
       setAnimationClass("");
       setTimeout(() => {
         setAnimationClass("animate-fade-left");
-        markHard(currentFlashcard.id);
+        markDifficulty(currentFlashcard.id, true);
       }, 10);
     } else {
       setAnimationClass("animate-fade-left");
-      markHard(currentFlashcard.id);
+      markDifficulty(currentFlashcard.id, true);
     }
   };
 
@@ -65,11 +64,11 @@ const Flashcard = () => {
       setAnimationClass("");
       setTimeout(() => {
         setAnimationClass("animate-fade-right");
-        markEasy(currentFlashcard.id);
+        markDifficulty(currentFlashcard.id, false);
       }, 10);
     } else {
       setAnimationClass("animate-fade-right");
-      markEasy(currentFlashcard.id);
+      markDifficulty(currentFlashcard.id, false);
     }
   };
 

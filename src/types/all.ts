@@ -7,7 +7,7 @@ export type Language = {
 };
 
 export type Japanese = {
-  syllabary: Syllabary[];
+  syllabary: Syllabary;
   dictionary: Dictionary[];
 };
 

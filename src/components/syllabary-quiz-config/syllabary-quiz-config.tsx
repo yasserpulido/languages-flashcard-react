@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import { Modal } from "../modal";
 import { ModalMethods } from "../../types";
 import { useDictionary } from "../../hooks";
@@ -6,7 +6,10 @@ import { SYLLABARY_GROUP_OPTIONS } from "../../constants";
 import { Button } from "../button";
 
 const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
-  const { startSyllabaryQuiz } = useDictionary();
+  const { syllabary, userData, startSyllabaryQuiz } = useDictionary();
+  const [groupHasHard, setGroupHasHard] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const [syllabaryOption, setSyllabaryOption] = useState("hiragana");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -16,19 +19,44 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
     const group = formData.get("group") as string;
     const sort = formData.get("sort") as string;
     const writing = formData.get("writing") !== null;
+    const onlyHard = formData.get("only-hard") === "only-hard";
 
     startSyllabaryQuiz({
       syllabary,
       group,
       sort,
       writing,
+      onlyHard,
     });
 
     if (ref && "current" in ref && ref.current) {
       ref.current.close();
     }
 
+    setGroupHasHard(false);
+    setChecked(false);
     form.reset();
+  };
+
+  const handleGroupChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    let hasHard = false;
+    setChecked(false);
+
+    const hardListIds = userData.syllabary.hiraganaHardCardIds;
+
+    const syllabaryList =
+      syllabaryOption === "hiragana" ? syllabary.hiragana : syllabary.katakana;
+
+    for (const s of syllabaryList) {
+      if (s.type === event.target.value) {
+        hasHard = hardListIds.some((id) => id === s.id);
+        setGroupHasHard(hasHard);
+      }
+
+      if (hasHard) {
+        break;
+      }
+    }
   };
 
   return (
@@ -53,11 +81,18 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
               name="syllabary"
               value="hiragana"
               defaultChecked
+              onChange={() => setSyllabaryOption("hiragana")}
             />
             <label className="ml-2">Hiragana</label>
           </div>
           <div className="flex items-center">
-            <input type="radio" name="syllabary" value="katakana" disabled />
+            <input
+              type="radio"
+              name="syllabary"
+              value="katakana"
+              disabled
+              onChange={() => setSyllabaryOption("katakana")}
+            />
             <label className="ml-2">Katakana</label>
           </div>
         </div>
@@ -65,7 +100,11 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
           <label htmlFor="group" className="block text-gray-800">
             Group:
           </label>
-          <select name="group" className="block w-full">
+          <select
+            name="group"
+            className="block w-full"
+            onChange={handleGroupChange}
+          >
             {SYLLABARY_GROUP_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -105,8 +144,23 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
               id="writing"
             />
             <label className="ml-2" htmlFor="writing">
-              {" "}
               Is writing quiz?
+            </label>
+          </div>
+        </div>
+        <div className="mt-4">
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              name="only-hard"
+              value="only-hard"
+              id="only-hard"
+              checked={checked}
+              disabled={!groupHasHard}
+              onChange={() => setChecked(!checked)}
+            />
+            <label className="ml-2" htmlFor="only-hard">
+              only hard?
             </label>
           </div>
         </div>

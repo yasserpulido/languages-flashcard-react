@@ -1,6 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import { Dictionary, Japanese, Syllabary, Syllable } from "../types";
 
+type UserData = {
+  syllabary: {
+    hiraganaHardCardIds: number[];
+  };
+  dictionary: {
+    hardCardsId: number[];
+  };
+  lastPlayed: string;
+};
+
 type Stats = {
   easy: number[];
   hard: number[];
@@ -11,11 +21,13 @@ type SyllabaryQuizConfig = {
   group: string;
   sort: string;
   writing: boolean;
+  onlyHard: boolean;
 };
 
 type DictionaryQuizConfig = {
   logographic: string;
   category: string;
+  onlyHard: boolean;
 };
 
 type DictionaryContextType = {
@@ -26,13 +38,24 @@ type DictionaryContextType = {
   showFlashcard: boolean;
   showMenu: boolean;
   stats: Stats;
-  markEasy: (id: number) => void;
-  markHard: (id: number) => void;
-  resetQuiz: () => void;
+  userData: UserData;
+  dictionary: Dictionary[];
+  syllabary: Syllabary;
+  markDifficulty: (id: number, isHard: boolean) => void;
   returnToMenu: () => void;
   startDictionaryQuiz: (quizConfig: DictionaryQuizConfig) => void;
   startSyllabaryQuiz: (quizConfig: SyllabaryQuizConfig) => void;
   toggleFlashcard: () => void;
+};
+
+const userDataDefault: UserData = {
+  syllabary: {
+    hiraganaHardCardIds: [],
+  },
+  dictionary: {
+    hardCardsId: [],
+  },
+  lastPlayed: "",
 };
 
 export const DictionaryContext = createContext<DictionaryContextType>({
@@ -46,9 +69,13 @@ export const DictionaryContext = createContext<DictionaryContextType>({
     easy: [],
     hard: [],
   },
-  markEasy: () => {},
-  markHard: () => {},
-  resetQuiz: () => {},
+  userData: userDataDefault,
+  dictionary: [],
+  syllabary: {
+    hiragana: [],
+    katakana: [],
+  },
+  markDifficulty: () => {},
   returnToMenu: () => {},
   startDictionaryQuiz: () => {},
   startSyllabaryQuiz: () => {},
@@ -63,14 +90,14 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   const [japanese, setJapanese] = useState<Japanese | null>(null);
   const [maze, setMaze] = useState<Dictionary[] | Syllable[]>([]);
   const [showFlashcard, setShowFlashcard] = useState(false);
-  const [stats, setStats] = useState<Stats>({ easy: [], hard: [] });
+  const [stats, setStats] = useState<Stats>({
+    easy: [],
+    hard: [],
+  });
+  const [userData, setUserData] = useState<UserData>(userDataDefault);
   const [showMenu, setShowMenu] = useState(true);
   const [isDictionaryQuiz, setIsDictionaryQuiz] = useState(false);
   const [isWritingQuiz, setIsWritingQuiz] = useState(false);
-  const [syllabaryQuizConfig, setSyllabaryQuizConfig] =
-    useState<SyllabaryQuizConfig | null>(null);
-  const [dictionaryQuizConfig, setDictionaryQuizConfig] =
-    useState<DictionaryQuizConfig | null>(null);
   const [dictionaryCategories, setDictionaryCategories] = useState<string[]>(
     []
   );
@@ -92,13 +119,19 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     };
 
     fetchDictorionary();
+
+    const storedUserData = localStorage.getItem("userData");
+
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+    }
   }, []);
 
   const toggleFlashcard = () => {
     setShowFlashcard((prev) => !prev);
   };
 
-  const markEasy = (id: number) => {
+  const markDifficulty = (id: number, isHard: boolean) => {
     setMaze(
       (prevState: Dictionary[] | Syllable[]) =>
         prevState.filter((s) => s.id !== id) as typeof prevState
@@ -106,48 +139,64 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
 
     setShowFlashcard(false);
 
+    if (isDictionaryQuiz) {
+      setUserData((prev) => {
+        const { dictionary } = prev;
+
+        const hardAlreadyMarked = dictionary.hardCardsId.includes(id);
+
+        if (isHard && hardAlreadyMarked) {
+          return prev;
+        }
+
+        if (isHard && !hardAlreadyMarked) {
+          return {
+            ...prev,
+            dictionary: {
+              hardCardsId: [...dictionary.hardCardsId, id],
+            },
+          };
+        }
+
+        return {
+          ...prev,
+          dictionary: {
+            hardCardsId: dictionary.hardCardsId.filter((i) => i !== id),
+          },
+        };
+      });
+    } else {
+      setUserData((prev) => {
+        const { syllabary } = prev;
+
+        const hardAlreadyMarked = syllabary.hiraganaHardCardIds.includes(id);
+
+        if (isHard && hardAlreadyMarked) {
+          return prev;
+        }
+
+        if (isHard && !hardAlreadyMarked) {
+          syllabary.hiraganaHardCardIds.push(id);
+        } else {
+          syllabary.hiraganaHardCardIds = syllabary.hiraganaHardCardIds.filter(
+            (i) => i !== id
+          );
+        }
+
+        return {
+          ...prev,
+          syllabary: syllabary,
+        };
+      });
+    }
+
     setStats((prev) => {
-      if (prev.easy.includes(id)) return prev;
+      const { easy, hard } = prev;
 
-      const hardIndex = prev.hard.indexOf(id);
-
-      if (hardIndex !== -1) {
-        prev.hard.splice(hardIndex, 1);
-      }
-
-      return { ...prev, easy: [...prev.easy, id] };
-    });
-  };
-
-  const markHard = (id: number) => {
-    setMaze((prevState: Dictionary[] | Syllable[]) => {
-      const flashcardIndex = prevState.findIndex(
-        (flashcard) => flashcard.id === id
-      );
-
-      if (flashcardIndex === -1) return prevState;
-
-      const flashcard = prevState[flashcardIndex];
-
-      return [
-        ...prevState.slice(0, flashcardIndex),
-        ...prevState.slice(flashcardIndex + 1),
-        flashcard,
-      ] as typeof prevState;
-    });
-
-    setShowFlashcard(false);
-
-    setStats((prev) => {
-      if (prev.hard.includes(id)) return prev;
-
-      const easyIndex = prev.easy.indexOf(id);
-
-      if (easyIndex !== -1) {
-        prev.easy.splice(easyIndex, 1);
-      }
-
-      return { ...prev, hard: [...prev.hard, id] };
+      return {
+        easy: isHard ? easy : [...easy, id],
+        hard: isHard ? [...hard, id] : hard,
+      };
     });
   };
 
@@ -161,66 +210,81 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   };
 
   const startSyllabaryQuiz = (quizConfig: SyllabaryQuizConfig) => {
-    setSyllabaryQuizConfig(quizConfig);
+    const { syllabary, group, sort, onlyHard } = quizConfig;
 
-    const { syllabary, group, sort } = quizConfig;
-
-    const syllabaryList = japanese?.syllabary
-      .map((s) => s[syllabary as keyof Syllabary])
-      .flat();
+    const syllabaryList =
+      syllabary === "hiragana"
+        ? japanese?.syllabary.hiragana
+        : japanese?.syllabary.katakana;
 
     if (!syllabaryList) return;
 
-    const result =
+    let result =
       group === "all"
         ? syllabaryList
         : syllabaryList.filter((s) => s.type === group.toLowerCase());
 
+    if (onlyHard) {
+      const hardIds =
+        syllabary === "hiragana" ? userData.syllabary.hiraganaHardCardIds : [];
+
+      result = result.filter((r) => hardIds.includes(r.id));
+    }
+
     setMaze(sort === "random" ? shuffleArray(result) : result);
-    setStats({ easy: [], hard: [] });
     setShowMenu(false);
     setIsDictionaryQuiz(false);
     setIsWritingQuiz(quizConfig.writing || false);
   };
 
   const startDictionaryQuiz = (quizConfig: DictionaryQuizConfig) => {
-    setDictionaryQuizConfig(quizConfig);
-
     if (!japanese) return;
 
-    const { logographic, category } = quizConfig;
+    const { logographic, category, onlyHard } = quizConfig;
 
     const dictionaryList =
       category === "All"
         ? japanese.dictionary
         : japanese.dictionary.filter((d) => d.category === category);
 
-    const result = dictionaryList.filter((d) => d.logographic === logographic);
+    let result = dictionaryList.filter((d) => d.logographic === logographic);
+
+    if (onlyHard) {
+      const hardIds = userData.dictionary.hardCardsId;
+
+      result = result.filter((r) => hardIds.includes(r.id));
+    }
 
     setMaze(shuffleArray(result));
-    setStats({ easy: [], hard: [] });
     setShowMenu(false);
     setIsDictionaryQuiz(true);
     setIsWritingQuiz(false);
   };
 
   const returnToMenu = () => {
+    if (!maze.length) {
+      const lastPlayed = new Date().toLocaleString();
+
+      setUserData((prev) => ({
+        ...prev,
+        lastPlayed: lastPlayed,
+      }));
+
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({ ...userData, lastPlayed })
+      );
+    }
+
     setMaze([]);
+    setStats({
+      easy: [],
+      hard: [],
+    });
     setShowMenu(true);
     setIsDictionaryQuiz(false);
     setIsWritingQuiz(false);
     setShowFlashcard(false);
-    setStats({ easy: [], hard: [] });
-    setDictionaryQuizConfig(null);
-    setSyllabaryQuizConfig(null);
-  };
-
-  const resetQuiz = () => {
-    if (isDictionaryQuiz) {
-      startDictionaryQuiz(dictionaryQuizConfig as DictionaryQuizConfig);
-    } else if (syllabaryQuizConfig) {
-      startSyllabaryQuiz(syllabaryQuizConfig);
-    }
   };
 
   return (
@@ -233,9 +297,10 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
         showFlashcard,
         showMenu,
         stats,
-        markEasy,
-        markHard,
-        resetQuiz,
+        userData,
+        dictionary: japanese?.dictionary || [],
+        syllabary: japanese?.syllabary || { hiragana: [], katakana: [] },
+        markDifficulty,
         returnToMenu,
         startDictionaryQuiz,
         startSyllabaryQuiz,
