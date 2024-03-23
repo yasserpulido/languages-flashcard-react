@@ -125,7 +125,10 @@ const DictionaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
           </select>
         </div>
         <div className="mt-4">
-          <div className="flex items-center" onChange={() => setChecked(!checked)}>
+          <div
+            className="flex items-center"
+            onChange={() => setChecked(!checked)}
+          >
             <input
               type="checkbox"
               name="only-hard"
@@ -135,7 +138,10 @@ const DictionaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
               disabled={!categoryHasHard}
               onChange={() => setChecked(!checked)}
             />
-            <label className="ml-2" htmlFor="only-hard">
+            <label
+              htmlFor="only-hard"
+              className={`ml-2 ${!categoryHasHard ? "text-gray-400" : ""}`}
+            >
               only hard?
             </label>
           </div>

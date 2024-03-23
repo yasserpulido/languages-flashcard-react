@@ -18,12 +18,6 @@ function App() {
 
   const { currentFlashcard, showMenu, stats, returnToMenu } = useDictionary();
 
-  const isMobile = () => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
-  };
-
   return (
     <div className="min-h-screen h-full flex flex-col bg-white p-4 sm:w-2/5 w-full m-auto">
       <SyllabaryQuizConfig ref={syllabaryQuizConfigModal} />
@@ -58,20 +52,16 @@ function App() {
                 Dictionary Quiz
               </Button>
             </div>
-            {!isMobile() ? (
-              <button
-                onClick={() => {
-                  if (settingsModal.current) {
-                    settingsModal.current.open();
-                  }
-                }}
-                className="text-base text-black"
-              >
-                Settings
-              </button>
-            ) : (
-              <p>Settings are not available on mobile devices.</p>
-            )}
+            <button
+              onClick={() => {
+                if (settingsModal.current) {
+                  settingsModal.current.open();
+                }
+              }}
+              className="text-base text-black"
+            >
+              Settings
+            </button>
           </>
         ) : (
           <>

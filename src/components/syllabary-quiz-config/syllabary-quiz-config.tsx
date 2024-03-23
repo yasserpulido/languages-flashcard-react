@@ -160,7 +160,10 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
               disabled={!groupHasHard}
               onChange={() => setChecked(!checked)}
             />
-            <label className="ml-2" htmlFor="only-hard">
+            <label
+              className={`ml-2 ${!groupHasHard ? "text-gray-400" : ""}`}
+              htmlFor="only-hard"
+            >
               only hard?
             </label>
           </div>
