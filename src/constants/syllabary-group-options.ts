@@ -1,11 +1,11 @@
 export const SYLLABARY_GROUP_OPTIONS = [
   {
     value: "all",
-    label: "ALL",
+    label: "All",
   },
   {
     value: "vowel",
-    label: "VOWEL",
+    label: "Vowel",
   },
   {
     value: "k",

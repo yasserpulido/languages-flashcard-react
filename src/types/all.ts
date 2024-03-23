@@ -17,7 +17,7 @@ export type Dictionary = {
   romaji: string;
   translation: string;
   audioName: string;
-  category: string;
+  categories: string;
   logographic: string;
 };
 

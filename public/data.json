@@ -740,7 +740,10 @@
                     "romaji": "o cha",
                     "translation": "green teas, green tea, tea",
                     "audioName": "ocha.mp3",
-                    "category": "food and drink",
+                    "categories": [
+                        "food and drink",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -749,7 +752,10 @@
                     "romaji": "ku da sa i",
                     "translation": "please",
                     "audioName": "kudasai.mp3",
-                    "category": "politeness",
+                    "categories": [
+                        "expression",
+                        "adverb"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -758,7 +764,10 @@
                     "romaji": "su shi",
                     "translation": "sushi",
                     "audioName": "sushi.mp3",
-                    "category": "food and drink",
+                    "categories": [
+                        "food and drink",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -767,7 +776,10 @@
                     "romaji": "go ha n",
                     "translation": "rice, meal, meals",
                     "audioName": "gohan.mp3",
-                    "category": "food and drink",
+                    "categories": [
+                        "food and drink",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -776,7 +788,10 @@
                     "romaji": "mi zu",
                     "translation": "water",
                     "audioName": "mizu.mp3",
-                    "category": "food and drink",
+                    "categories": [
+                        "food and drink",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -785,7 +800,10 @@
                     "romaji": "to",
                     "translation": "and, that, door",
                     "audioName": "to.mp3",
-                    "category": "particle",
+                    "categories": [
+                        "particle",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -794,7 +812,10 @@
                     "romaji": "i sha",
                     "translation": "doctor, doctors",
                     "audioName": "isha.mp3",
-                    "category": "people",
+                    "categories": [
+                        "people",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -803,7 +824,10 @@
                     "romaji": "se n se i",
                     "translation": "teacher, professor, teachers",
                     "audioName": "sensei.mp3",
-                    "category": "people",
+                    "categories": [
+                        "people",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -812,7 +836,10 @@
                     "romaji": "ya sa shi i",
                     "translation": "kind, easy, nice",
                     "audioName": "yasashii.mp3",
-                    "category": "adjectives",
+                    "categories": [
+                        "adjectives",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -821,7 +848,10 @@
                     "romaji": "be n go shi",
                     "translation": "lawyer, lawyers",
                     "audioName": "bengoshi.mp3",
-                    "category": "people",
+                    "categories": [
+                        "people",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -830,7 +860,9 @@
                     "romaji": "ka kko i i",
                     "translation": "cool, good-looking, stylish",
                     "audioName": "kakkoii.mp3",
-                    "category": "adjectives",
+                    "categories": [
+                        "adjectives"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -839,7 +871,10 @@
                     "romaji": "hi to",
                     "translation": "person, people",
                     "audioName": "hito.mp3",
-                    "category": "people",
+                    "categories": [
+                        "people",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -848,7 +883,10 @@
                     "romaji": "ga ku se i",
                     "translation": "student, students",
                     "audioName": "gakusei.mp3",
-                    "category": "people",
+                    "categories": [
+                        "people",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -857,7 +895,10 @@
                     "romaji": "ko n ni chi wa",
                     "translation": "hello, good afternoon",
                     "audioName": "konnichiwa.mp3",
-                    "category": "greetings",
+                    "categories": [
+                        "interjection",
+                        "greetings"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -866,7 +907,9 @@
                     "romaji": "sa n",
                     "translation": "Mr., Mrs., Miss, Ms.",
                     "audioName": "san.mp3",
-                    "category": "suffix",
+                    "categories": [
+                        "honourifics"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -875,7 +918,10 @@
                     "romaji": "ja a ne",
                     "translation": "see you, goodbye",
                     "audioName": "jaane.mp3",
-                    "category": "greetings",
+                    "categories": [
+                        "interjection",
+                        "greetings"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -884,7 +930,9 @@
                     "romaji": "wa",
                     "translation": "topic marker particle",
                     "audioName": "wa.mp3",
-                    "category": "particle",
+                    "categories": [
+                        "particle"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -893,7 +941,9 @@
                     "romaji": "ko re",
                     "translation": "this",
                     "audioName": "kore.mp3",
-                    "category": "pronoun",
+                    "categories": [
+                        "pronoun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -902,7 +952,9 @@
                     "romaji": "so re",
                     "translation": "that",
                     "audioName": "sore.mp3",
-                    "category": "pronoun",
+                    "categories": [
+                        "pronoun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -911,7 +963,9 @@
                     "romaji": "ha i",
                     "translation": "yes",
                     "audioName": "hai.mp3",
-                    "category": "interjection",
+                    "categories": [
+                        "interjection"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -920,7 +974,9 @@
                     "romaji": "i i e",
                     "translation": "no",
                     "audioName": "iie.mp3",
-                    "category": "interjection",
+                    "categories": [
+                        "interjection"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -929,7 +985,9 @@
                     "romaji": "o i shi i",
                     "translation": "delicious, tasty, good",
                     "audioName": "oishii.mp3",
-                    "category": "adjectives",
+                    "categories": [
+                        "adjectives"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -938,7 +996,10 @@
                     "romaji": "o ya su mi na sa i",
                     "translation": "good night",
                     "audioName": "oyasuminasai.mp3",
-                    "category": "greetings",
+                    "categories": [
+                        "interjection",
+                        "greetings"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -947,7 +1008,10 @@
                     "romaji": "a ri ga to u go za i ma su",
                     "translation": "thank you",
                     "audioName": "arigatougozaimasu.mp3",
-                    "category": "greetings",
+                    "categories": [
+                        "interjection",
+                        "greetings"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -956,7 +1020,10 @@
                     "romaji": "su mi ma se n",
                     "translation": "excuse me, I'm sorry",
                     "audioName": "sumimasen.mp3",
-                    "category": "greetings",
+                    "categories": [
+                        "interjection",
+                        "greetings"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -965,7 +1032,10 @@
                     "romaji": "go me n na sa i",
                     "translation": "I'm sorry",
                     "audioName": "gomennasai.mp3",
-                    "category": "greetings",
+                    "categories": [
+                        "interjection",
+                        "greetings"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -974,7 +1044,10 @@
                     "romaji": "o ha yo u",
                     "translation": "good morning",
                     "audioName": "ohayou.mp3",
-                    "category": "greetings",
+                    "categories": [
+                        "interjection",
+                        "greetings"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -983,7 +1056,9 @@
                     "romaji": "o o ki i",
                     "translation": "big, large, great",
                     "audioName": "ookii.mp3",
-                    "category": "adjectives",
+                    "categories": [
+                        "adjectives"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -992,7 +1067,10 @@
                     "romaji": "ni ho n",
                     "translation": "Japan",
                     "audioName": "nihon.mp3",
-                    "category": "places",
+                    "categories": [
+                        "places",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1001,7 +1079,9 @@
                     "romaji": "chi i sa i",
                     "translation": "small, little",
                     "audioName": "chiisai.mp3",
-                    "category": "adjectives",
+                    "categories": [
+                        "adjectives"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1010,7 +1090,10 @@
                     "romaji": "ni ho n ji n",
                     "translation": "Japanese people",
                     "audioName": "nihonjin.mp3",
-                    "category": "people",
+                    "categories": [
+                        "people",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1019,7 +1102,9 @@
                     "romaji": "a i",
                     "translation": "love, affection",
                     "audioName": "ai.mp3",
-                    "category": "feelings",
+                    "categories": [
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1028,7 +1113,9 @@
                     "romaji": "e",
                     "translation": "picture, drawing",
                     "audioName": "e.mp3",
-                    "category": "things",
+                    "categories": [
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1037,7 +1124,10 @@
                     "romaji": "i e",
                     "translation": "house, home",
                     "audioName": "ie.mp3",
-                    "category": "places",
+                    "categories": [
+                        "places",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1046,7 +1136,9 @@
                     "romaji": "i i",
                     "translation": "good, nice, fine",
                     "audioName": "ii.mp3",
-                    "category": "adjectives",
+                    "categories": [
+                        "adjectives"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1055,7 +1147,10 @@
                     "romaji": "ka o",
                     "translation": "face",
                     "audioName": "kao.mp3",
-                    "category": "body parts",
+                    "categories": [
+                        "body parts",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1064,7 +1159,10 @@
                     "romaji": "e ki",
                     "translation": "train station",
                     "audioName": "eki.mp3",
-                    "category": "places",
+                    "categories": [
+                        "places",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1073,7 +1171,9 @@
                     "romaji": "i ku",
                     "translation": "to go",
                     "audioName": "iku.mp3",
-                    "category": "verb",
+                    "categories": [
+                        "verb"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1082,7 +1182,10 @@
                     "romaji": "ku u ko u",
                     "translation": "airport",
                     "audioName": "kuukou.mp3",
-                    "category": "places",
+                    "categories": [
+                        "places",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1091,7 +1194,11 @@
                     "romaji": "ko i",
                     "translation": "love or carp fish",
                     "audioName": "koi.mp3",
-                    "category": "feelings",
+                    "categories": [
+                        "feelings",
+                        "animals",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1100,7 +1207,10 @@
                     "romaji": "i ke",
                     "translation": "pond",
                     "audioName": "ike.mp3",
-                    "category": "places",
+                    "categories": [
+                        "places",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1109,7 +1219,10 @@
                     "romaji": "sa ke",
                     "translation": "salmon, sake, alcohol",
                     "audioName": "sake.mp3",
-                    "category": "food and drink",
+                    "categories": [
+                        "food and drink",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1118,7 +1231,10 @@
                     "romaji": "u shi",
                     "translation": "cow",
                     "audioName": "ushi.mp3",
-                    "category": "animals",
+                    "categories": [
+                        "animals",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1127,7 +1243,9 @@
                     "romaji": "a sa",
                     "translation": "morning",
                     "audioName": "asa.mp3",
-                    "category": "time",
+                    "categories": [
+                        "time"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1136,7 +1254,9 @@
                     "romaji": "su ki",
                     "translation": "to like (something)",
                     "audioName": "suki.mp3",
-                    "category": "verb",
+                    "categories": [
+                        "verb"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1145,7 +1265,10 @@
                     "romaji": "u so",
                     "translation": "lie",
                     "audioName": "uso.mp3",
-                    "category": "feelings",
+                    "categories": [
+                        "feelings",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1154,7 +1277,9 @@
                     "romaji": "ka sa",
                     "translation": "umbrella",
                     "audioName": "kasa.mp3",
-                    "category": "things",
+                    "categories": [
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1163,7 +1288,10 @@
                     "romaji": "se ki",
                     "translation": "char or to cough",
                     "audioName": "seki.mp3",
-                    "category": "things",
+                    "categories": [
+                        "noun",
+                        "verb"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1172,7 +1300,9 @@
                     "romaji": "o to",
                     "translation": "sound",
                     "audioName": "oto.mp3",
-                    "category": "things",
+                    "categories": [
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1181,7 +1311,10 @@
                     "romaji": "i chi",
                     "translation": "one",
                     "audioName": "ichi.mp3",
-                    "category": "numbers",
+                    "categories": [
+                        "numbers",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1190,7 +1323,10 @@
                     "romaji": "chi chi",
                     "translation": "father",
                     "audioName": "chichi.mp3",
-                    "category": "people",
+                    "categories": [
+                        "people",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1199,7 +1335,9 @@
                     "romaji": "su te ki",
                     "translation": "lovely, dreamy, beautiful",
                     "audioName": "suteki.mp3",
-                    "category": "adjectives",
+                    "categories": [
+                        "adjectives"
+                    ],
                     "logographic": "hiragana"
                 },
                 {
@@ -1208,8 +1346,329 @@
                     "romaji": "ku chi",
                     "translation": "mouth",
                     "audioName": "kuchi.mp3",
-                    "category": "body parts",
+                    "categories": [
+                        "body parts",
+                        "noun"
+                    ],
                     "logographic": "hiragana"
+                },
+                {
+                    "id": 54,
+                    "word": "ねこ",
+                    "romaji": "ne ko",
+                    "translation": "cat",
+                    "audioName": "neko.mp3",
+                    "categories": [
+                        "animals",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 55,
+                    "word": "ねつ",
+                    "romaji": "ne tsu",
+                    "translation": "fever",
+                    "audioName": "netsu.mp3",
+                    "categories": [
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 56,
+                    "word": "いぬ",
+                    "romaji": "i nu",
+                    "translation": "dog",
+                    "audioName": "inu.mp3",
+                    "categories": [
+                        "animals",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 57,
+                    "word": "にし",
+                    "romaji": "ni shi",
+                    "translation": "west",
+                    "audioName": "nishi.mp3",
+                    "categories": [
+                        "places",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 58,
+                    "word": "なつ",
+                    "romaji": "na tsu",
+                    "translation": "summer",
+                    "audioName": "natsu.mp3",
+                    "categories": [
+                        "time",
+                        "noun",
+                        "adverb"
+                    ]
+                },
+                {
+                    "id": 59,
+                    "word": "なに",
+                    "romaji": "na ni",
+                    "translation": "what",
+                    "audioName": "nani.mp3",
+                    "categories": [
+                        "pronoun"
+                    ]
+                },
+                {
+                    "id": 60,
+                    "word": "へた",
+                    "romaji": "he ta",
+                    "translation": "bad at, or unskilled",
+                    "audioName": "heta.mp3",
+                    "categories": [
+                        "adjectives"
+                    ]
+                },
+                {
+                    "id": 61,
+                    "word": "ほし",
+                    "romaji": "ho shi",
+                    "translation": "star",
+                    "audioName": "hoshi.mp3",
+                    "categories": [
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 62,
+                    "word": "とうふ",
+                    "romaji": "to u fu",
+                    "translation": "tofu",
+                    "audioName": "tofu.mp3",
+                    "categories": [
+                        "food and drink",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 63,
+                    "word": "もも",
+                    "romaji": "mo mo",
+                    "translation": "peach",
+                    "audioName": "momo.mp3",
+                    "categories": [
+                        "food and drink",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 64,
+                    "word": "まめ",
+                    "romaji": "ma me",
+                    "translation": "bean",
+                    "audioName": "mame.mp3",
+                    "categories": [
+                        "food and drink",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 65,
+                    "word": "ひみつ",
+                    "romaji": "hi mi tsu",
+                    "translation": "secret",
+                    "audioName": "himitsu.mp3",
+                    "categories": [
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 66,
+                    "word": "しまうま",
+                    "romaji": "shi ma u ma",
+                    "translation": "zebra",
+                    "audioName": "shimauma.mp3",
+                    "categories": [
+                        "animals",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 67,
+                    "word": "たま",
+                    "romaji": "ta ma",
+                    "translation": "ball",
+                    "audioName": "tama.mp3",
+                    "categories": [
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 68,
+                    "word": "まち",
+                    "romaji": "ma chi",
+                    "translation": "town",
+                    "audioName": "machi.mp3",
+                    "categories": [
+                        "places",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 69,
+                    "word": "こめ",
+                    "romaji": "ko me",
+                    "translation": "rice",
+                    "audioName": "kome.mp3",
+                    "categories": [
+                        "food and drink",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 70,
+                    "word": "はやい",
+                    "romaji": "ha ya i",
+                    "translation": "early, fast",
+                    "audioName": "hayai.mp3",
+                    "categories": [
+                        "adjectives"
+                    ]
+                },
+                {
+                    "id": 71,
+                    "word": "いきましょう",
+                    "romaji": "i ki ma shou",
+                    "translation": "let's go",
+                    "audioName": "ikimashou.mp3",
+                    "categories": [
+                        "verb"
+                    ]
+                },
+                {
+                    "id": 72,
+                    "word": "へや",
+                    "romaji": "he ya",
+                    "translation": "room",
+                    "audioName": "heya.mp3",
+                    "categories": [
+                        "places",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 73,
+                    "word": "かいしゃ",
+                    "romaji": "ka i sha",
+                    "translation": "company, corporation",
+                    "audioName": "kaisha.mp3",
+                    "categories": [
+                        "places",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 74,
+                    "word": "きょう",
+                    "romaji": "kyo u",
+                    "translation": "today",
+                    "audioName": "kyou.mp3",
+                    "categories": [
+                        "time",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 75,
+                    "word": "ひゃく",
+                    "romaji": "hya ku",
+                    "translation": "hundred",
+                    "audioName": "hyaku.mp3",
+                    "categories": [
+                        "numbers",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 76,
+                    "word": "りか",
+                    "romaji": "ri ka",
+                    "translation": "science",
+                    "audioName": "rika.mp3",
+                    "categories": [
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 77,
+                    "word": "らく",
+                    "romaji": "ra ku",
+                    "translation": "easy, comfortable",
+                    "audioName": "raku.mp3",
+                    "categories": [
+                        "adjectives"
+                    ]
+                },
+                {
+                    "id": 78,
+                    "word": "くり",
+                    "romaji": "ku ri",
+                    "translation": "chestnut",
+                    "audioName": "kuri.mp3",
+                    "categories": [
+                        "food and drink",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 79,
+                    "word": "りす",
+                    "romaji": "ri su",
+                    "translation": "squirrel",
+                    "audioName": "risu.mp3",
+                    "categories": [
+                        "animals",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 80,
+                    "word": "あり",
+                    "romaji": "a ri",
+                    "translation": "ant",
+                    "audioName": "ari.mp3",
+                    "categories": [
+                        "animals",
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 81,
+                    "word": "あれ",
+                    "romaji": "a re",
+                    "translation": "that",
+                    "audioName": "are.mp3",
+                    "categories": [
+                        "pronoun"
+                    ]
+                },
+                {
+                    "id": 82,
+                    "word": "れつ",
+                    "romaji": "re tsu",
+                    "translation": "row, line",
+                    "audioName": "retsu.mp3",
+                    "categories": [
+                        "noun"
+                    ]
+                },
+                {
+                    "id": 83,
+                    "word": "ろうそく",
+                    "romaji": "ro u so ku",
+                    "translation": "candle",
+                    "audioName": "rousoku.mp3",
+                    "categories": [
+                        "noun"
+                    ]
                 }
             ]
         }

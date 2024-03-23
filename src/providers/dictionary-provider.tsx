@@ -132,10 +132,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
 
       setJapanese(languages.japanese);
 
-      const categories = languages.japanese.dictionary.map(
-        (d: Dictionary) => d.category
-      );
-
+      const categories = languages.japanese.dictionary.flatMap((d: Dictionary) => d.categories);
       const uniqueCategories = Array.from(new Set(categories));
 
       setDictionaryCategories(uniqueCategories as string[]);
@@ -268,7 +265,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     const dictionaryList =
       category === "All"
         ? japanese.dictionary
-        : japanese.dictionary.filter((d) => d.category === category);
+        : japanese.dictionary.filter((d) => d.categories.includes(category));
 
     let result = dictionaryList.filter((d) => d.logographic === logographic);
 
