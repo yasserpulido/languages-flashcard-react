@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useState } from "react";
 
 import { Modal } from "../modal";
 import { ModalMethods } from "../../types";
@@ -15,6 +15,34 @@ const DictionaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
     "All",
     ...dictionaryCategories.sort((a, b) => a.localeCompare(b)),
   ];
+
+  const handleCategoryChange = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      let hasHard = false;
+      setChecked(false);
+
+      for (const d of dictionary) {
+        if (
+          d.categories.includes(event.target.value) ||
+          event.target.value.toLowerCase() === "all"
+        ) {
+          hasHard = userData.dictionary.hardCardsId.some((id) => id === d.id);
+          setCategoryHasHard(hasHard);
+        }
+
+        if (hasHard) {
+          break;
+        }
+      }
+    },
+    [dictionary, userData.dictionary.hardCardsId]
+  );
+
+  useEffect(() => {
+    handleCategoryChange({
+      target: { value: "all" },
+    } as React.ChangeEvent<HTMLSelectElement>);
+  }, [handleCategoryChange]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -37,24 +65,6 @@ const DictionaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
     setCategoryHasHard(false);
     setChecked(false);
     form.reset();
-  };
-
-  const handleCategoryChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    let hasHard = false;
-    setChecked(false);
-
-    for (const d of dictionary) {
-      if (d.category === event.target.value) {
-        hasHard = userData.dictionary.hardCardsId.some((id) => id === d.id);
-        setCategoryHasHard(hasHard);
-      }
-
-      if (hasHard) {
-        break;
-      }
-    }
   };
 
   return (

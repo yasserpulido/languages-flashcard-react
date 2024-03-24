@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useState } from "react";
 
 import { Modal } from "../modal";
 import { ModalMethods } from "../../types";
@@ -11,6 +11,38 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
   const [groupHasHard, setGroupHasHard] = useState(false);
   const [checked, setChecked] = useState(false);
   const [syllabaryOption, setSyllabaryOption] = useState("hiragana");
+
+  const handleGroupChange = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      let hasHard = false;
+      setChecked(false);
+
+      const hardListIds = userData.syllabary.hiraganaHardCardIds;
+
+      const syllabaryList =
+        syllabaryOption === "hiragana"
+          ? syllabary.hiragana
+          : syllabary.katakana;
+
+      for (const s of syllabaryList) {
+        if (s.type === event.target.value || event.target.value === "all") {
+          hasHard = hardListIds.some((id) => id === s.id);
+          setGroupHasHard(hasHard);
+        }
+
+        if (hasHard) {
+          break;
+        }
+      }
+    },
+    [userData, syllabary, syllabaryOption]
+  );
+
+  useEffect(() => {
+    handleGroupChange({
+      target: { value: "all" },
+    } as React.ChangeEvent<HTMLSelectElement>);
+  }, [handleGroupChange]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -37,27 +69,6 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
     setGroupHasHard(false);
     setChecked(false);
     form.reset();
-  };
-
-  const handleGroupChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    let hasHard = false;
-    setChecked(false);
-
-    const hardListIds = userData.syllabary.hiraganaHardCardIds;
-
-    const syllabaryList =
-      syllabaryOption === "hiragana" ? syllabary.hiragana : syllabary.katakana;
-
-    for (const s of syllabaryList) {
-      if (s.type === event.target.value) {
-        hasHard = hardListIds.some((id) => id === s.id);
-        setGroupHasHard(hasHard);
-      }
-
-      if (hasHard) {
-        break;
-      }
-    }
   };
 
   return (

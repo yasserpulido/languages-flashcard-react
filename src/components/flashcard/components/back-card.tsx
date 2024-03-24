@@ -22,8 +22,6 @@ const BackCard = () => {
     }
   };
 
-  console.log({ isWritingQuiz, isDictionaryQuiz });
-
   return (
     <span className={`text-black text-center ${classes}`}>
       {handleFlashcardBottom()}
