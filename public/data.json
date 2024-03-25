@@ -2399,6 +2399,72 @@
                     "categories": [
                         "noun"
                     ]
+                },
+                {
+                    "id": 84,
+                    "word": "いつ",
+                    "romaji": "i tsu",
+                    "translation": "when",
+                    "audioName": "itsu.mp3",
+                    "categories": [
+                        "pronoun",
+                        "question word"
+                    ]
+                },
+                {
+                    "id": 85,
+                    "word": "どこ",
+                    "romaji": "do ko",
+                    "translation": "where",
+                    "audioName": "doko.mp3",
+                    "categories": [
+                        "pronoun",
+                        "question word"
+                    ]
+                },
+                {
+                    "id": 86,
+                    "word": "どうして",
+                    "romaji": "do u shi te",
+                    "translation": "why",
+                    "audioName": "doushite.mp3",
+                    "categories": [
+                        "pronoun",
+                        "question word"
+                    ]
+                },
+                {
+                    "id": 87,
+                    "word": "なぜ",
+                    "romaji": "na ze",
+                    "translation": "why",
+                    "audioName": "naze.mp3",
+                    "categories": [
+                        "pronoun",
+                        "question word"
+                    ]
+                },
+                {
+                    "id": 88,
+                    "word": "だれ",
+                    "romaji": "da re",
+                    "translation": "who",
+                    "audioName": "dare.mp3",
+                    "categories": [
+                        "pronoun",
+                        "question word"
+                    ]
+                },
+                {
+                    "id": 89,
+                    "word": "だれ",
+                    "romaji": "da re",
+                    "translation": "who",
+                    "audioName": "dare.mp3",
+                    "categories": [
+                        "pronoun",
+                        "question word"
+                    ]
                 }
             ]
         }
