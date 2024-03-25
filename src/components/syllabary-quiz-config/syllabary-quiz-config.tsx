@@ -17,7 +17,10 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
       let hasHard = false;
       setChecked(false);
 
-      const hardListIds = userData.syllabary.hiraganaHardCardIds;
+      const hardListIds =
+        syllabaryOption === "hiragana"
+          ? userData.syllabary.hiraganaHardCardIds
+          : userData.syllabary.katakanaHardCardIds;
 
       const syllabaryList =
         syllabaryOption === "hiragana"
@@ -94,18 +97,23 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
               value="hiragana"
               defaultChecked
               onChange={() => setSyllabaryOption("hiragana")}
+              id="hiragana"
             />
-            <label className="ml-2">Hiragana</label>
+            <label className="ml-2" htmlFor="hiraga">
+              Hiragana
+            </label>
           </div>
           <div className="flex items-center">
             <input
               type="radio"
               name="syllabary"
               value="katakana"
-              disabled
               onChange={() => setSyllabaryOption("katakana")}
+              id="katakana"
             />
-            <label className="ml-2">Katakana</label>
+            <label className="ml-2" htmlFor="katakana">
+              Katakana
+            </label>
           </div>
         </div>
         <div className="mt-4">

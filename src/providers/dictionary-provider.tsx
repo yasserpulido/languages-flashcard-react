@@ -4,6 +4,7 @@ import { Dictionary, Japanese, Syllabary, Syllable } from "../types";
 type UserData = {
   syllabary: {
     hiraganaHardCardIds: number[];
+    katakanaHardCardIds: number[];
   };
   dictionary: {
     hardCardsId: number[];
@@ -61,6 +62,7 @@ type DictionaryContextType = {
 const userDataDefault: UserData = {
   syllabary: {
     hiraganaHardCardIds: [],
+    katakanaHardCardIds: [],
   },
   dictionary: {
     hardCardsId: [],
@@ -124,6 +126,8 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     type: "success",
     message: "",
   });
+  const [syllabaryQuizConfig, setSyllabaryQuizConfig] =
+    useState<SyllabaryQuizConfig | null>(null);
 
   useEffect(() => {
     const fetchDictorionary = async () => {
@@ -132,7 +136,9 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
 
       setJapanese(languages.japanese);
 
-      const categories = languages.japanese.dictionary.flatMap((d: Dictionary) => d.categories);
+      const categories = languages.japanese.dictionary.flatMap(
+        (d: Dictionary) => d.categories
+      );
       const uniqueCategories = Array.from(new Set(categories));
 
       setDictionaryCategories(uniqueCategories as string[]);
@@ -189,18 +195,32 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
       setUserData((prev) => {
         const { syllabary } = prev;
 
-        const hardAlreadyMarked = syllabary.hiraganaHardCardIds.includes(id);
+        let hardAlreadyMarked;
+
+        if (syllabaryQuizConfig?.syllabary === "hiragana") {
+          hardAlreadyMarked = syllabary.hiraganaHardCardIds.includes(id);
+        } else {
+          hardAlreadyMarked = syllabary.katakanaHardCardIds.includes(id);
+        }
 
         if (isHard && hardAlreadyMarked) {
           return prev;
         }
 
         if (isHard && !hardAlreadyMarked) {
-          syllabary.hiraganaHardCardIds.push(id);
+          if (syllabaryQuizConfig?.syllabary === "hiragana") {
+            syllabary.hiraganaHardCardIds.push(id);
+          } else {
+            syllabary.katakanaHardCardIds.push(id);
+          }
         } else {
-          syllabary.hiraganaHardCardIds = syllabary.hiraganaHardCardIds.filter(
-            (i) => i !== id
-          );
+          if (syllabaryQuizConfig?.syllabary === "hiragana") {
+            syllabary.hiraganaHardCardIds =
+              syllabary.hiraganaHardCardIds.filter((i) => i !== id);
+          } else {
+            syllabary.katakanaHardCardIds =
+              syllabary.katakanaHardCardIds.filter((i) => i !== id);
+          }
         }
 
         return {
@@ -246,7 +266,9 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
 
     if (onlyHard) {
       const hardIds =
-        syllabary === "hiragana" ? userData.syllabary.hiraganaHardCardIds : [];
+        syllabary === "hiragana"
+          ? userData.syllabary.hiraganaHardCardIds
+          : userData.syllabary.katakanaHardCardIds;
 
       result = result.filter((r) => hardIds.includes(r.id));
     }
@@ -255,6 +277,7 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     setShowMenu(false);
     setIsDictionaryQuiz(false);
     setIsWritingQuiz(quizConfig.writing || false);
+    setSyllabaryQuizConfig(quizConfig);
   };
 
   const startDictionaryQuiz = (quizConfig: DictionaryQuizConfig) => {
@@ -318,7 +341,9 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
 
     const hasValidSyllabary = (o: UserData) =>
       Array.isArray(o.syllabary.hiraganaHardCardIds) &&
-      o.syllabary.hiraganaHardCardIds.every((id) => typeof id === "number");
+      o.syllabary.hiraganaHardCardIds.every((id) => typeof id === "number") &&
+      Array.isArray(o.syllabary.katakanaHardCardIds) &&
+      o.syllabary.katakanaHardCardIds.every((id) => typeof id === "number");
 
     const hasValidDictionary = (o: UserData) =>
       Array.isArray(o.dictionary.hardCardsId) &&
