@@ -2091,7 +2091,8 @@
                     "categories": [
                         "animals",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 55,
@@ -2101,7 +2102,8 @@
                     "audioName": "netsu.mp3",
                     "categories": [
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 56,
@@ -2112,7 +2114,8 @@
                     "categories": [
                         "animals",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 57,
@@ -2123,7 +2126,8 @@
                     "categories": [
                         "places",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 58,
@@ -2135,7 +2139,8 @@
                         "time",
                         "noun",
                         "adverb"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 59,
@@ -2145,7 +2150,8 @@
                     "audioName": "nani.mp3",
                     "categories": [
                         "pronoun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 60,
@@ -2155,7 +2161,8 @@
                     "audioName": "heta.mp3",
                     "categories": [
                         "adjectives"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 61,
@@ -2165,7 +2172,8 @@
                     "audioName": "hoshi.mp3",
                     "categories": [
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 62,
@@ -2176,7 +2184,8 @@
                     "categories": [
                         "food and drink",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 63,
@@ -2187,7 +2196,8 @@
                     "categories": [
                         "food and drink",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 64,
@@ -2198,7 +2208,8 @@
                     "categories": [
                         "food and drink",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 65,
@@ -2208,7 +2219,8 @@
                     "audioName": "himitsu.mp3",
                     "categories": [
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 66,
@@ -2219,7 +2231,8 @@
                     "categories": [
                         "animals",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 67,
@@ -2229,7 +2242,8 @@
                     "audioName": "tama.mp3",
                     "categories": [
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 68,
@@ -2240,7 +2254,8 @@
                     "categories": [
                         "places",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 69,
@@ -2251,7 +2266,8 @@
                     "categories": [
                         "food and drink",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 70,
@@ -2261,7 +2277,8 @@
                     "audioName": "hayai.mp3",
                     "categories": [
                         "adjectives"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 71,
@@ -2271,7 +2288,8 @@
                     "audioName": "ikimashou.mp3",
                     "categories": [
                         "verb"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 72,
@@ -2282,7 +2300,8 @@
                     "categories": [
                         "places",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 73,
@@ -2293,7 +2312,8 @@
                     "categories": [
                         "places",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 74,
@@ -2304,7 +2324,8 @@
                     "categories": [
                         "time",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 75,
@@ -2315,7 +2336,8 @@
                     "categories": [
                         "numbers",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 76,
@@ -2325,7 +2347,8 @@
                     "audioName": "rika.mp3",
                     "categories": [
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 77,
@@ -2335,7 +2358,8 @@
                     "audioName": "raku.mp3",
                     "categories": [
                         "adjectives"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 78,
@@ -2346,7 +2370,8 @@
                     "categories": [
                         "food and drink",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 79,
@@ -2357,7 +2382,8 @@
                     "categories": [
                         "animals",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 80,
@@ -2368,7 +2394,8 @@
                     "categories": [
                         "animals",
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 81,
@@ -2378,7 +2405,8 @@
                     "audioName": "are.mp3",
                     "categories": [
                         "pronoun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 82,
@@ -2388,7 +2416,8 @@
                     "audioName": "retsu.mp3",
                     "categories": [
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 83,
@@ -2398,7 +2427,8 @@
                     "audioName": "rousoku.mp3",
                     "categories": [
                         "noun"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 84,
@@ -2409,7 +2439,8 @@
                     "categories": [
                         "pronoun",
                         "question word"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 85,
@@ -2420,7 +2451,8 @@
                     "categories": [
                         "pronoun",
                         "question word"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 86,
@@ -2431,7 +2463,8 @@
                     "categories": [
                         "pronoun",
                         "question word"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 87,
@@ -2453,7 +2486,8 @@
                     "categories": [
                         "pronoun",
                         "question word"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 },
                 {
                     "id": 89,
@@ -2464,7 +2498,8 @@
                     "categories": [
                         "pronoun",
                         "question word"
-                    ]
+                    ],
+                    "logographic": "hiragana"
                 }
             ]
         }

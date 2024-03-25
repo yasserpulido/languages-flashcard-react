@@ -290,6 +290,8 @@ const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
         ? japanese.dictionary
         : japanese.dictionary.filter((d) => d.categories.includes(category));
 
+    console.log(dictionaryList);
+
     let result = dictionaryList.filter((d) => d.logographic === logographic);
 
     if (onlyHard) {
