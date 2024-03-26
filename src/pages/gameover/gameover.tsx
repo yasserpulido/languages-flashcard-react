@@ -1,11 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components";
-import { useFlashcard, useUserData } from "../../hooks";
+import { useFlashcard, useQuiz, useUserData } from "../../hooks";
+import { useEffect } from "react";
 
 const GameOver = () => {
   const navigate = useNavigate();
   const { setUserDataAndStore } = useUserData();
   const { stats, returnToMenu } = useFlashcard();
+  const { quizEnded } = useQuiz();
+
+  useEffect(() => {
+    if (!quizEnded) {
+      navigate("/");
+    }
+  }, [navigate, quizEnded]);
 
   return (
     <div className="flex flex-col gap-8">

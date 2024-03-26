@@ -9,7 +9,6 @@ const SyllabaryQuiz = () => {
 
   useEffect(() => {
     if (quizEnded) {
-      console.log("Game Ended");
       navigate("/gameover");
     }
   }, [quizEnded, navigate]);

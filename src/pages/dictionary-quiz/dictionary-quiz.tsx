@@ -10,7 +10,6 @@ const DictionaryQuiz = () => {
 
   useEffect(() => {
     if (quizEnded) {
-      console.log("Quiz Ended");
       navigate("/gameover");
     }
   }, [quizEnded, navigate]);

@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { SYLLABARY_GROUP_OPTIONS } from "../../constants";
 import { Button } from "../button";
 import { useDictionary, useQuiz, useUserData } from "../../hooks";
 
 const SyllabaryQuizConfig = () => {
+  const navigate = useNavigate();
   const { userData } = useUserData();
   const { syllabaryData } = useDictionary();
   const { startSyllabaryQuiz } = useQuiz();
@@ -191,8 +193,11 @@ const SyllabaryQuizConfig = () => {
           </div>
         </div>
         <hr className="my-4" />
-        <div className="mt-4 text-right">
-          <Button type="submit" color="primary">
+        <div className="flex justify-end gap-4">
+          <Button onClick={() => navigate("/")} color="secondary">
+            Menu
+          </Button>
+          <Button color="primary" type="submit">
             Start
           </Button>
         </div>

@@ -1,9 +1,11 @@
 import { memo, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "../button";
 import { useDictionary, useQuiz, useUserData } from "../../hooks";
 
 const DictionaryQuizConfig = () => {
+  const navigate = useNavigate();
   const { dictionaryCategories, dictionaryData } = useDictionary();
   const { userData } = useUserData();
   const { startDictionaryQuiz } = useQuiz();
@@ -165,7 +167,10 @@ const DictionaryQuizConfig = () => {
           </label>
         </div>
         <hr className="my-4" />
-        <div className="mt-4 text-right">
+        <div className="flex justify-end gap-4">
+          <Button onClick={() => navigate("/")} color="secondary">
+            Menu
+          </Button>
           <Button color="primary" type="submit">
             Start
           </Button>
