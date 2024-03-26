@@ -1,13 +1,14 @@
-import { forwardRef, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-import { Modal } from "../modal";
-import { ModalMethods } from "../../types";
-import { useDictionary } from "../../hooks";
 import { SYLLABARY_GROUP_OPTIONS } from "../../constants";
 import { Button } from "../button";
+import { useDictionary, useQuiz, useUserData } from "../../hooks";
 
-const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
-  const { syllabary, userData, startSyllabaryQuiz } = useDictionary();
+const SyllabaryQuizConfig = () => {
+  const { userData } = useUserData();
+  const { syllabaryData } = useDictionary();
+  const { startSyllabaryQuiz } = useQuiz();
+
   const [groupHasHard, setGroupHasHard] = useState(false);
   const [checked, setChecked] = useState(false);
   const [syllabaryOption, setSyllabaryOption] = useState("hiragana");
@@ -24,8 +25,8 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
 
       const syllabaryList =
         syllabaryOption === "hiragana"
-          ? syllabary.hiragana
-          : syllabary.katakana;
+          ? syllabaryData.hiragana
+          : syllabaryData.katakana;
 
       for (const s of syllabaryList) {
         if (s.type === event.target.value || event.target.value === "all") {
@@ -38,7 +39,13 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
         }
       }
     },
-    [userData, syllabary, syllabaryOption]
+    [
+      syllabaryData.hiragana,
+      syllabaryData.katakana,
+      syllabaryOption,
+      userData.syllabary.hiraganaHardCardIds,
+      userData.syllabary.katakanaHardCardIds,
+    ]
   );
 
   useEffect(() => {
@@ -65,17 +72,13 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
       onlyHard,
     });
 
-    if (ref && "current" in ref && ref.current) {
-      ref.current.close();
-    }
-
     setGroupHasHard(false);
     setChecked(false);
     form.reset();
   };
 
   return (
-    <Modal ref={ref}>
+    <div className="w-full border-2 rounded-xl border-gray-200 p-4">
       <h1 className="text-2xl font-bold text-gray-800 text-center">
         Syllabary Quiz
       </h1>
@@ -190,12 +193,12 @@ const SyllabaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
         <hr className="my-4" />
         <div className="mt-4 text-right">
           <Button type="submit" color="primary">
-            Start Quiz
+            Start
           </Button>
         </div>
       </form>
-    </Modal>
+    </div>
   );
-});
+};
 
 export default SyllabaryQuizConfig;

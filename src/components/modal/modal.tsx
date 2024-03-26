@@ -2,14 +2,14 @@ import { forwardRef, useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
 
 import { ModalMethods } from "../../types";
-import { useDictionary } from "../../hooks";
+import { useUI } from "../../hooks";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const Modal = forwardRef<ModalMethods, Props>(({ children }, ref) => {
-  const { resetResponseMessage } = useDictionary();
+  const { resetResponseMessage } = useUI();
   const dialog = useRef<HTMLDialogElement | null>(null);
   const content = useRef<HTMLDivElement | null>(null);
   const modal = document.getElementById("modal");
