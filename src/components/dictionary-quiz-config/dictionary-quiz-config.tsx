@@ -1,13 +1,13 @@
-import { forwardRef, useCallback, useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
-import { Modal } from "../modal";
-import { ModalMethods } from "../../types";
-import { useDictionary } from "../../hooks";
 import { Button } from "../button";
+import { useDictionary, useQuiz, useUserData } from "../../hooks";
 
-const DictionaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
-  const { dictionaryCategories, userData, dictionary, startDictionaryQuiz } =
-    useDictionary();
+const DictionaryQuizConfig = () => {
+  const { dictionaryCategories, dictionaryData } = useDictionary();
+  const { userData } = useUserData();
+  const { startDictionaryQuiz } = useQuiz();
+
   const [categoryHasHard, setCategoryHasHard] = useState(false);
   const [checked, setChecked] = useState(false);
 
@@ -16,33 +16,37 @@ const DictionaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
     ...dictionaryCategories.sort((a, b) => a.localeCompare(b)),
   ];
 
-  const handleCategoryChange = useCallback(
-    (event: React.ChangeEvent<HTMLSelectElement>) => {
-      let hasHard = false;
-      setChecked(false);
-
-      for (const d of dictionary) {
-        if (
-          d.categories.includes(event.target.value) ||
-          event.target.value.toLowerCase() === "all"
-        ) {
-          hasHard = userData.dictionary.hardCardsId.some((id) => id === d.id);
-          setCategoryHasHard(hasHard);
-        }
-
-        if (hasHard) {
-          break;
-        }
-      }
-    },
-    [dictionary, userData.dictionary.hardCardsId]
-  );
-
   useEffect(() => {
-    handleCategoryChange({
-      target: { value: "all" },
-    } as React.ChangeEvent<HTMLSelectElement>);
-  }, [handleCategoryChange]);
+    for (const d of dictionaryData) {
+      const hasHard = userData.dictionary.hardCardsId.some((id) => id === d.id);
+
+      if (hasHard) {
+        setCategoryHasHard(true);
+        break;
+      }
+    }
+  }, [dictionaryData, userData.dictionary.hardCardsId]);
+
+  const handleCategoryChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    let hasHard = false;
+    setChecked(false);
+
+    for (const d of dictionaryData) {
+      if (
+        d.categories.includes(event.target.value) ||
+        event.target.value.toLowerCase() === "all"
+      ) {
+        hasHard = userData.dictionary.hardCardsId.some((id) => id === d.id);
+        setCategoryHasHard(hasHard);
+      }
+
+      if (hasHard) {
+        break;
+      }
+    }
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -51,16 +55,14 @@ const DictionaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
     const logographic = formData.get("logographic") as string;
     const category = formData.get("category") as string;
     const onlyHard = formData.get("only-hard") === "only-hard";
+    const showRomaji = formData.get("show-romaji") === "show-romaji";
 
     startDictionaryQuiz({
       logographic,
       category,
       onlyHard,
+      showRomaji,
     });
-
-    if (ref && "current" in ref && ref.current) {
-      ref.current.close();
-    }
 
     setCategoryHasHard(false);
     setChecked(false);
@@ -68,7 +70,7 @@ const DictionaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
   };
 
   return (
-    <Modal ref={ref}>
+    <div className="w-full border-2 rounded-xl border-gray-200 p-4">
       <h1 className="text-2xl font-bold text-gray-800 text-center">
         Dictionary Quiz
       </h1>
@@ -134,37 +136,45 @@ const DictionaryQuizConfig = forwardRef<ModalMethods>((_, ref) => {
             ))}
           </select>
         </div>
-        <div className="mt-4">
-          <div
-            className="flex items-center"
+        <div className="flex items-center mt-4">
+          <input
+            type="checkbox"
+            name="only-hard"
+            value="only-hard"
+            id="only-hard"
+            checked={checked}
+            disabled={!categoryHasHard}
             onChange={() => setChecked(!checked)}
+          />
+          <label
+            htmlFor="only-hard"
+            className={`ml-2 ${!categoryHasHard ? "text-gray-400" : ""}`}
           >
-            <input
-              type="checkbox"
-              name="only-hard"
-              value="only-hard"
-              id="only-hard"
-              checked={checked}
-              disabled={!categoryHasHard}
-              onChange={() => setChecked(!checked)}
-            />
-            <label
-              htmlFor="only-hard"
-              className={`ml-2 ${!categoryHasHard ? "text-gray-400" : ""}`}
-            >
-              only hard?
-            </label>
-          </div>
+            Only hards?
+          </label>
+        </div>
+        <div className="flex items-center mt-4">
+          <input
+            type="checkbox"
+            name="show-romaji"
+            value="show-romaji"
+            id="show-romaji"
+          />
+          <label htmlFor="show-romaji" className="ml-2">
+            Show romaji?
+          </label>
         </div>
         <hr className="my-4" />
         <div className="mt-4 text-right">
           <Button color="primary" type="submit">
-            Start Quiz
+            Start
           </Button>
         </div>
       </form>
-    </Modal>
+    </div>
   );
-});
+};
 
-export default DictionaryQuizConfig;
+const MemoizedDictionaryQuizConfig = memo(DictionaryQuizConfig);
+
+export default MemoizedDictionaryQuizConfig;

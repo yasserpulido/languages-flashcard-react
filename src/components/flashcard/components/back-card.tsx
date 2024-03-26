@@ -1,15 +1,16 @@
-import { useDictionary } from "../../../hooks";
+import { useFlashcard, useQuiz } from "../../../hooks";
 import { Dictionary, Syllable } from "../../../types";
 
 const BackCard = () => {
-  const { currentFlashcard, isWritingQuiz, isDictionaryQuiz } = useDictionary();
+  const { isDictionaryQuiz, isWritingQuiz } = useQuiz();
+  const { currentFlashcard } = useFlashcard();
 
-  let classes = "text-base"
+  let classes = "text-base";
 
   if (!isDictionaryQuiz && !isWritingQuiz) {
-    classes = "text-xl"
+    classes = "text-xl";
   } else if (isWritingQuiz) {
-    classes = "text-6xl"
+    classes = "text-6xl";
   }
 
   const handleFlashcardBottom = () => {

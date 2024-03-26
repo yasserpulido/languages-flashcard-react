@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DictionaryContext } from "../providers";
+import { DictionaryContext } from "../context";
 
 export const useDictionary = () => {
   const context = useContext(DictionaryContext);
