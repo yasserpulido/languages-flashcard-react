@@ -2499,6 +2499,40 @@
                     "question word"
                 ],
                 "logographic": "hiragana"
+            },
+            {
+                "id": 90,
+                "word": "ここ",
+                "romaji": "ko ko",
+                "translation": "here",
+                "audioName": "koko.mp3",
+                "categories": [
+                    "pronoun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 91,
+                "word": "だいがく",
+                "romaji": "da i ga ku",
+                "translation": "university, college",
+                "audioName": "daigaku.mp3",
+                "categories": [
+                    "places",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": "そこ",
+                "word": "そこ",
+                "romaji": "so ko",
+                "translation": "there",
+                "audioName": "soko.mp3",
+                "categories": [
+                    "pronoun"
+                ],
+                "logographic": "hiragana"
             }
         ]
     }
