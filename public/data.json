@@ -2490,18 +2490,6 @@
             },
             {
                 "id": 89,
-                "word": "だれ",
-                "romaji": "da re",
-                "translation": "who",
-                "audioName": "dare.mp3",
-                "categories": [
-                    "pronoun",
-                    "question word"
-                ],
-                "logographic": "hiragana"
-            },
-            {
-                "id": 90,
                 "word": "ここ",
                 "romaji": "ko ko",
                 "translation": "here",
@@ -2512,7 +2500,7 @@
                 "logographic": "hiragana"
             },
             {
-                "id": 91,
+                "id": 90,
                 "word": "だいがく",
                 "romaji": "da i ga ku",
                 "translation": "university, college",
@@ -2524,7 +2512,7 @@
                 "logographic": "hiragana"
             },
             {
-                "id": "そこ",
+                "id": 91,
                 "word": "そこ",
                 "romaji": "so ko",
                 "translation": "there",
