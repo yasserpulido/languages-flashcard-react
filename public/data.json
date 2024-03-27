@@ -2522,6 +2522,105 @@
                     "pronoun"
                 ],
                 "logographic": "hiragana"
+            },
+            {
+                "id": 92,
+                "word": "の",
+                "romaji": "no",
+                "translation": "of, 's, '",
+                "audioName": "no.mp3",
+                "categories": [
+                    "particle"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 93,
+                "word": "でも",
+                "romaji": "de mo",
+                "translation": "but",
+                "audioName": "demo.mp3",
+                "categories": [
+                    "conjunction"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 94,
+                "word": "わたし",
+                "romaji": "wa ta shi",
+                "translation": "I, me",
+                "audioName": "watashi.mp3",
+                "categories": [
+                    "pronoun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 95,
+                "word": "あなた",
+                "romaji": "a na ta",
+                "translation": "you",
+                "audioName": "anata.mp3",
+                "categories": [
+                    "pronoun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 96,
+                "word": "かれ",
+                "romaji": "ka re",
+                "translation": "he, boyfriend",
+                "audioName": "kare.mp3",
+                "categories": [
+                    "pronoun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 97,
+                "word": "かのじょ",
+                "romaji": "ka no jo",
+                "translation": "she, girlfriend",
+                "audioName": "kanojo.mp3",
+                "categories": [
+                    "pronoun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 98,
+                "word": "わたしたち",
+                "romaji": "wa ta shi ta chi",
+                "translation": "we, us",
+                "audioName": "watashitachi.mp3",
+                "categories": [
+                    "pronoun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 99,
+                "word": "あなたたち",
+                "romaji": "a na ta ta chi",
+                "translation": "you all",
+                "audioName": "anatatachi.mp3",
+                "categories": [
+                    "pronoun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 100,
+                "word": "かれら",
+                "romaji": "ka re ra",
+                "translation": "they",
+                "audioName": "karera.mp3",
+                "categories": [
+                    "pronoun"
+                ],
+                "logographic": "hiragana"
             }
         ]
     }
