@@ -1,8 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components";
+import { useFlashcard, useQuiz } from "../../hooks";
+import { useEffect } from "react";
 
 const Menu = () => {
+  const { resetQuizContext } = useQuiz();
+  const { resetFlashcardContext } = useFlashcard();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    resetQuizContext();
+    resetFlashcardContext();
+  }, [resetQuizContext, resetFlashcardContext]);
 
   return (
     <div className="w-full h-full flex flex-col gap-8 justify-center items-center">
