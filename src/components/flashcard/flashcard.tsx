@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ModalMethods } from "../../types";
 import { ButtonRounded } from "../button-rounded";
 import { BackCard, FrontCard } from "./components";
-import { useFlashcard } from "../../hooks";
+import { useFlashcard, useQuiz } from "../../hooks";
 import { Button, Modal } from "..";
 
 const Flashcard = () => {
@@ -12,11 +12,12 @@ const Flashcard = () => {
   const navigate = useNavigate();
   const {
     currentFlashcard,
-    showFlashcard,
-    setShowFlashcard,
-    markDifficulty,
-    returnToMenu,
+    showFlashcardBack,
+    setShowFlashcardBack,
+    markFlashcard,
+    resetFlashcardContext,
   } = useFlashcard();
+  const { resetQuizContext } = useQuiz();
 
   const [animationClass, setAnimationClass] = useState("animate-fade");
   const modalRef = useRef<ModalMethods | null>(null);
@@ -37,7 +38,7 @@ const Flashcard = () => {
   };
 
   const handleFlip = () => {
-    setShowFlashcard(!showFlashcard);
+    setShowFlashcardBack((prev) => !prev);
 
     if (animationClass !== "animate-rotate-y") {
       setAnimationClass("animate-rotate-y");
@@ -58,11 +59,11 @@ const Flashcard = () => {
       setAnimationClass("");
       setTimeout(() => {
         setAnimationClass("animate-fade-left");
-        markDifficulty(currentFlashcard.id, true);
+        markFlashcard(currentFlashcard.id, true);
       }, 10);
     } else {
       setAnimationClass("animate-fade-left");
-      markDifficulty(currentFlashcard.id, true);
+      markFlashcard(currentFlashcard.id, true);
     }
   };
 
@@ -71,11 +72,11 @@ const Flashcard = () => {
       setAnimationClass("");
       setTimeout(() => {
         setAnimationClass("animate-fade-right");
-        markDifficulty(currentFlashcard.id, false);
+        markFlashcard(currentFlashcard.id, false);
       }, 10);
     } else {
       setAnimationClass("animate-fade-right");
-      markDifficulty(currentFlashcard.id, false);
+      markFlashcard(currentFlashcard.id, false);
     }
   };
 
@@ -104,7 +105,8 @@ const Flashcard = () => {
             </button>
             <Button
               onClick={() => {
-                returnToMenu();
+                resetFlashcardContext();
+                resetQuizContext();
                 navigate("/");
               }}
               color="secondary"
@@ -126,7 +128,7 @@ const Flashcard = () => {
           <div
             className={`z-10 flashcard-border border-4 p-2 text-wrap rounded-2xl bg-gray-200 sm:min-h-80 min-h-60 sm:w-60 w-48 flex items-center justify-center ${animationClass}`}
           >
-            {showFlashcard ? <BackCard /> : <FrontCard />}
+            {showFlashcardBack ? <BackCard /> : <FrontCard />}
           </div>
           <ButtonRounded icon="right" onClick={handleClickRight} />
         </div>

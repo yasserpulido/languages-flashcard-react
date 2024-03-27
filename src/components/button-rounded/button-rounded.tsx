@@ -7,7 +7,7 @@ import {
   Volume,
 } from "grommet-icons";
 
-type ButtonRoundedProps = {
+type Props = {
   onClick?: () => void;
   icon: "left" | "right" | "flip" | "sound" | "download" | "upload";
 };
@@ -30,7 +30,7 @@ const borderClasses = {
   upload: "btn-border-file",
 };
 
-const ButtonRounded = ({ onClick, icon }: ButtonRoundedProps) => {
+const ButtonRounded = ({ onClick, icon }: Props) => {
   const handleIcon = (icon: string) => {
     switch (icon) {
       case "left":

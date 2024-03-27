@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 import { SYLLABARY_GROUP_OPTIONS } from "../../constants";
 import { Button } from "../button";
-import { useDictionary, useQuiz, useUserData } from "../../hooks";
+import { useJapenese, useQuiz } from "../../hooks";
 
 const SyllabaryQuizConfig = () => {
   const navigate = useNavigate();
-  const { userData } = useUserData();
-  const { syllabaryData } = useDictionary();
+  const { userData, syllabaryData } = useJapenese();
   const { startSyllabaryQuiz } = useQuiz();
 
   const [groupHasHard, setGroupHasHard] = useState(false);

@@ -1,172 +1,141 @@
-import React, {
-  createContext,
-  useState,
-  useCallback,
-  useMemo,
-  useEffect,
-} from "react";
+import React, { createContext, useState, useCallback, useMemo } from "react";
 
-import { Dictionary, Stats, Syllable } from "../types";
-import { useQuiz, useUserData } from "../hooks";
+import { Dictionary, FlashcardMarked, Syllable } from "../types";
+import { useQuiz } from "../hooks";
 
 type FlashcardContextType = {
   currentFlashcard: Dictionary | Syllable | null;
-  showFlashcard: boolean;
-  stats: Stats;
-  markDifficulty: (id: number, isHard: boolean) => void;
-  returnToMenu: () => void;
-  setShowFlashcard: React.Dispatch<React.SetStateAction<boolean>>;
+  flashcardMarked: FlashcardMarked;
+  showFlashcardBack: boolean;
+  markFlashcard: (id: number, isHard: boolean) => void;
+  setShowFlashcardBack: React.Dispatch<React.SetStateAction<boolean>>;
+  resetFlashcardContext: () => void;
 };
 
 export const FlashcardContext = createContext<FlashcardContextType | undefined>(
   undefined
 );
 
-type FlashcardProviderProps = {
+type Props = {
   children: React.ReactNode;
 };
 
-export const FlashcardProvider = ({ children }: FlashcardProviderProps) => {
-  const { setUserData } = useUserData();
+export const FlashcardProvider = ({ children }: Props) => {
   const {
     maze,
-    setMaze,
-    setIsDictionaryQuiz,
-    setIsWritingQuiz,
-    isDictionaryQuiz,
     syllabaryQuizConfig,
-    quizStarted,
-    setQuizEnded,
-    setQuizStarted,
+    dictionaryQuizConfig,
+    removeFlashcardFromMaze,
   } = useQuiz();
 
-  const [showFlashcard, setShowFlashcard] = useState(false);
-  const [stats, setStats] = useState<Stats>({
-    easy: [],
-    hard: [],
+  const [showFlashcardBack, setShowFlashcardBack] = useState(false);
+  const [flashcardMarked, setFlashcardMarked] = useState<FlashcardMarked>({
+    dictionary: {
+      easy: [],
+      hard: [],
+    },
+    syllabary: {
+      hiragana: {
+        easy: [],
+        hard: [],
+      },
+      katakana: {
+        easy: [],
+        hard: [],
+      },
+    },
   });
 
-  useEffect(() => {
-    if (quizStarted && maze.length === 0) {
-      setQuizEnded(true);
-    }
-  }, [maze.length, setQuizEnded, quizStarted]);
-
-  const markDifficulty = useCallback(
+  const markFlashcard = useCallback(
     (id: number, isHard: boolean) => {
-      setMaze(
-        (prevState: Dictionary[] | Syllable[]) =>
-          prevState.filter((s) => s.id !== id) as typeof prevState
-      );
+      removeFlashcardFromMaze(id);
 
-      setShowFlashcard(false);
+      const isDictionaryQuiz = !!dictionaryQuizConfig;
+
+      setShowFlashcardBack(false);
 
       if (isDictionaryQuiz) {
-        setUserData((prev) => {
+        setFlashcardMarked((prev) => {
           const { dictionary } = prev;
-
-          const hardAlreadyMarked = dictionary.hardCardsId.includes(id);
-
-          if (isHard && hardAlreadyMarked) {
-            return prev;
-          }
-
-          if (isHard && !hardAlreadyMarked) {
-            return {
-              ...prev,
-              dictionary: {
-                hardCardsId: [...dictionary.hardCardsId, id],
-              },
-            };
-          }
 
           return {
             ...prev,
             dictionary: {
-              hardCardsId: dictionary.hardCardsId.filter((i) => i !== id),
+              ...dictionary,
+              [isHard ? "hard" : "easy"]: [
+                ...dictionary[isHard ? "hard" : "easy"],
+                id,
+              ],
             },
           };
         });
       } else {
-        setUserData((prev) => {
+        const isHiragana = syllabaryQuizConfig?.syllabary === "hiragana";
+
+        setFlashcardMarked((prev) => {
           const { syllabary } = prev;
-
-          let hardAlreadyMarked;
-
-          if (syllabaryQuizConfig?.syllabary === "hiragana") {
-            hardAlreadyMarked = syllabary.hiraganaHardCardIds.includes(id);
-          } else {
-            hardAlreadyMarked = syllabary.katakanaHardCardIds.includes(id);
-          }
-
-          if (isHard && hardAlreadyMarked) {
-            return prev;
-          }
-
-          if (isHard && !hardAlreadyMarked) {
-            if (syllabaryQuizConfig?.syllabary === "hiragana") {
-              syllabary.hiraganaHardCardIds.push(id);
-            } else {
-              syllabary.katakanaHardCardIds.push(id);
-            }
-          } else {
-            if (syllabaryQuizConfig?.syllabary === "hiragana") {
-              syllabary.hiraganaHardCardIds =
-                syllabary.hiraganaHardCardIds.filter((i) => i !== id);
-            } else {
-              syllabary.katakanaHardCardIds =
-                syllabary.katakanaHardCardIds.filter((i) => i !== id);
-            }
-          }
 
           return {
             ...prev,
-            syllabary: syllabary,
+            syllabary: {
+              ...syllabary,
+              [isHiragana ? "hiragana" : "katakana"]: {
+                ...syllabary[isHiragana ? "hiragana" : "katakana"],
+                [isHard ? "hard" : "easy"]: [
+                  ...syllabary[isHiragana ? "hiragana" : "katakana"][
+                    isHard ? "hard" : "easy"
+                  ],
+                  id,
+                ],
+              },
+            },
           };
         });
       }
-
-      setStats((prev) => {
-        const { easy, hard } = prev;
-
-        return {
-          easy: isHard ? easy : [...easy, id],
-          hard: isHard ? [...hard, id] : hard,
-        };
-      });
     },
-    [isDictionaryQuiz, setMaze, setUserData, syllabaryQuizConfig]
+    [
+      dictionaryQuizConfig,
+      syllabaryQuizConfig?.syllabary,
+      removeFlashcardFromMaze,
+    ]
   );
 
-  const returnToMenu = useCallback(() => {
-    setMaze([]);
-    setStats({
-      easy: [],
-      hard: [],
+  const resetFlashcardContext = useCallback(() => {
+    setFlashcardMarked({
+      dictionary: {
+        easy: [],
+        hard: [],
+      },
+      syllabary: {
+        hiragana: {
+          easy: [],
+          hard: [],
+        },
+        katakana: {
+          easy: [],
+          hard: [],
+        },
+      },
     });
-    setIsDictionaryQuiz(false);
-    setIsWritingQuiz(false);
-    setShowFlashcard(false);
-    setQuizEnded(false);
-    setQuizStarted(false);
-  }, [
-    setIsDictionaryQuiz,
-    setIsWritingQuiz,
-    setMaze,
-    setQuizEnded,
-    setQuizStarted,
-  ]);
+    setShowFlashcardBack(false);
+  }, []);
 
   const value = useMemo(
     () => ({
       currentFlashcard: maze[0] || null,
-      showFlashcard,
-      stats,
-      markDifficulty,
-      setShowFlashcard,
-      returnToMenu,
+      flashcardMarked,
+      showFlashcardBack,
+      markFlashcard,
+      setShowFlashcardBack,
+      resetFlashcardContext,
     }),
-    [markDifficulty, maze, returnToMenu, showFlashcard, stats]
+    [
+      flashcardMarked,
+      maze,
+      showFlashcardBack,
+      markFlashcard,
+      resetFlashcardContext,
+    ]
   );
 
   return (

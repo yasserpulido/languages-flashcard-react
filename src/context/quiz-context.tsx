@@ -1,49 +1,48 @@
 import React, { createContext, useState, useCallback, useMemo } from "react";
+
 import {
   Dictionary,
   DictionaryQuizConfig,
+  QuizState,
   SyllabaryQuizConfig,
   Syllable,
 } from "../types";
-import { useDictionary } from "../hooks";
 import { shuffleArray } from "../utils";
+import { useJapenese } from "../hooks";
 
 type QuizContextType = {
-  isDictionaryQuiz: boolean;
-  isWritingQuiz: boolean;
+  dictionaryQuizConfig: DictionaryQuizConfig | null;
   maze: Dictionary[] | Syllable[];
-  quizEnded: boolean;
-  quizStarted: boolean;
-  showRomaji: boolean;
+  quizState: QuizState;
   syllabaryQuizConfig: SyllabaryQuizConfig | null;
-  setIsDictionaryQuiz: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsWritingQuiz: React.Dispatch<React.SetStateAction<boolean>>;
-  setMaze: React.Dispatch<React.SetStateAction<Dictionary[] | Syllable[]>>;
-  setQuizStarted: React.Dispatch<React.SetStateAction<boolean>>;
-  setQuizEnded: React.Dispatch<React.SetStateAction<boolean>>;
   startDictionaryQuiz: (config: DictionaryQuizConfig) => void;
   startSyllabaryQuiz: (config: SyllabaryQuizConfig) => void;
+  removeFlashcardFromMaze: (id: number) => void;
+  resetQuizContext: () => void;
 };
 
 export const QuizContext = createContext<QuizContextType | undefined>(
   undefined
 );
 
-type QuizProviderProps = {
+type Props = {
   children: React.ReactNode;
 };
 
-export const QuizProvider = ({ children }: QuizProviderProps) => {
-  const { dictionaryData, syllabaryData, userData } = useDictionary();
+export const QuizProvider = ({ children }: Props) => {
+  const { dictionaryData, syllabaryData, userData } = useJapenese();
 
-  const [maze, setMaze] = useState<Dictionary[] | Syllable[]>([]);
-  const [showRomaji, setShowRomaji] = useState(false);
   const [syllabaryQuizConfig, setSyllabaryQuizConfig] =
     useState<SyllabaryQuizConfig | null>(null);
-  const [quizStarted, setQuizStarted] = useState(false);
-  const [quizEnded, setQuizEnded] = useState(false);
-  const [isDictionaryQuiz, setIsDictionaryQuiz] = useState(false);
-  const [isWritingQuiz, setIsWritingQuiz] = useState(false);
+  const [dictionaryQuizConfig, setDictionaryQuizConfig] =
+    useState<DictionaryQuizConfig | null>(null);
+
+  const [maze, setMaze] = useState<Dictionary[] | Syllable[]>([]);
+
+  const [quizState, setQuizState] = useState({
+    started: false,
+    ended: false,
+  });
 
   const startDictionaryQuiz = useCallback(
     (quizConfig: DictionaryQuizConfig) => {
@@ -51,7 +50,7 @@ export const QuizProvider = ({ children }: QuizProviderProps) => {
         return;
       }
 
-      const { logographic, category, onlyHard, showRomaji } = quizConfig;
+      const { logographic, category, onlyHard } = quizConfig;
 
       const filteredDictionaryList = dictionaryData.filter(
         (d) =>
@@ -61,16 +60,15 @@ export const QuizProvider = ({ children }: QuizProviderProps) => {
       );
 
       setMaze(shuffleArray(filteredDictionaryList));
-      setShowRomaji(showRomaji);
-      setQuizStarted(true);
-      setIsDictionaryQuiz(true);
+      setDictionaryQuizConfig(quizConfig);
+      setQuizState({ started: true, ended: false });
     },
     [dictionaryData, syllabaryData, userData.dictionary.hardCardsId]
   );
 
   const startSyllabaryQuiz = useCallback(
     (quizConfig: SyllabaryQuizConfig) => {
-      const { syllabary, group, sort, onlyHard, writing } = quizConfig;
+      const { syllabary, group, sort, onlyHard } = quizConfig;
 
       const syllabaryList =
         syllabary === "hiragana"
@@ -98,8 +96,7 @@ export const QuizProvider = ({ children }: QuizProviderProps) => {
 
       setMaze(finalList);
       setSyllabaryQuizConfig(quizConfig);
-      setQuizStarted(true);
-      setIsWritingQuiz(writing);
+      setQuizState({ started: true, ended: false });
     },
     [
       syllabaryData.hiragana,
@@ -109,33 +106,51 @@ export const QuizProvider = ({ children }: QuizProviderProps) => {
     ]
   );
 
+  const removeFlashcardFromMaze = useCallback(
+    (id: number) => {
+      const isLastItem = maze.length === 1;
+
+      if (isLastItem) {
+        setQuizState({ started: false, ended: true });
+        setMaze([]);
+        return;
+      }
+
+      setMaze(
+        (prev) =>
+          prev.filter((item) => item.id !== id) as Dictionary[] | Syllable[]
+      );
+    },
+    [setMaze, maze]
+  );
+
+  const resetQuizContext = useCallback(() => {
+    setDictionaryQuizConfig(null);
+    setSyllabaryQuizConfig(null);
+    setMaze([]);
+    setQuizState({ started: false, ended: false });
+  }, []);
+
   const value = useMemo(
     () => ({
-      isDictionaryQuiz,
-      isWritingQuiz,
+      dictionaryQuizConfig,
       maze,
-      quizEnded,
-      quizStarted,
-      showRomaji,
+      quizState,
       syllabaryQuizConfig,
-      setIsDictionaryQuiz,
-      setIsWritingQuiz,
-      setMaze,
-      setQuizEnded,
-      setQuizStarted,
+      removeFlashcardFromMaze,
+      resetQuizContext,
       startDictionaryQuiz,
       startSyllabaryQuiz,
     }),
     [
-      isDictionaryQuiz,
-      isWritingQuiz,
+      dictionaryQuizConfig,
       maze,
-      quizEnded,
-      quizStarted,
-      showRomaji,
+      quizState,
+      syllabaryQuizConfig,
+      removeFlashcardFromMaze,
+      resetQuizContext,
       startDictionaryQuiz,
       startSyllabaryQuiz,
-      syllabaryQuizConfig,
     ]
   );
 

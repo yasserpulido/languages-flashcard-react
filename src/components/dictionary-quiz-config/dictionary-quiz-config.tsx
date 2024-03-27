@@ -2,12 +2,11 @@ import { memo, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "../button";
-import { useDictionary, useQuiz, useUserData } from "../../hooks";
+import { useJapenese, useQuiz } from "../../hooks";
 
 const DictionaryQuizConfig = () => {
   const navigate = useNavigate();
-  const { dictionaryCategories, dictionaryData } = useDictionary();
-  const { userData } = useUserData();
+  const { userData, dictionaryCategories, dictionaryData } = useJapenese();
   const { startDictionaryQuiz } = useQuiz();
 
   const [categoryHasHard, setCategoryHasHard] = useState(false);

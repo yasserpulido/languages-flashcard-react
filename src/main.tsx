@@ -8,14 +8,13 @@ import {
 
 import App from "./App.tsx";
 import {
-  DictionaryProvider,
+  JapaneseProvider,
   FlashcardProvider,
   QuizProvider,
   SettingsProvider,
   UIProvider,
-  UserDataProvider,
 } from "./context";
-import { GameOver, Menu, SyllabaryQuiz, DictionaryQuiz, Settings } from "./pages";
+import { GameOver, Menu, Settings, Playground } from "./pages";
 
 import "./index.css";
 
@@ -30,11 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "syllabary-quiz",
-        element: <SyllabaryQuiz />,
+        element: <Playground />,
       },
       {
         path: "dictionary-quiz",
-        element: <DictionaryQuiz />,
+        element: <Playground />,
       },
       {
         path: "settings",
@@ -54,18 +53,16 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <DictionaryProvider>
-      <UserDataProvider>
-        <UIProvider>
-          <QuizProvider>
-            <FlashcardProvider>
-              <SettingsProvider>
-                <RouterProvider router={router} />
-              </SettingsProvider>
-            </FlashcardProvider>
-          </QuizProvider>
-        </UIProvider>
-      </UserDataProvider>
-    </DictionaryProvider>
+    <UIProvider>
+      <JapaneseProvider>
+        <QuizProvider>
+          <FlashcardProvider>
+            <SettingsProvider>
+              <RouterProvider router={router} />
+            </SettingsProvider>
+          </FlashcardProvider>
+        </QuizProvider>
+      </JapaneseProvider>
+    </UIProvider>
   </React.StrictMode>
 );

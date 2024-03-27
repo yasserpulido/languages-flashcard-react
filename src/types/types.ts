@@ -1,11 +1,3 @@
-export type Response = {
-  languages: Language[];
-};
-
-export type Language = {
-  japanese: Japanese;
-};
-
 export type Japanese = {
   syllabary: Syllabary;
   dictionary: Dictionary[];
@@ -65,20 +57,30 @@ export type UserData = {
   lastPlayed: string;
 };
 
-export type DictionaryContextType = {
-  dictionaryCategories: string[];
-  userData: UserData;
-  dictionaryData: Dictionary[];
-  syllabaryData: Syllabary;
-};
-
-export type Stats = {
-  easy: number[];
-  hard: number[];
-};
-
 export type ResponseMessage = {
   show: boolean;
   type: "error" | "success";
   message: string;
+};
+
+export type QuizState = {
+  started: boolean;
+  ended: boolean;
+};
+
+export type FlashcardMarked = {
+  syllabary: {
+    hiragana: {
+      easy: number[];
+      hard: number[];
+    };
+    katakana: {
+      easy: number[];
+      hard: number[];
+    };
+  };
+  dictionary: {
+    easy: number[];
+    hard: number[];
+  };
 };

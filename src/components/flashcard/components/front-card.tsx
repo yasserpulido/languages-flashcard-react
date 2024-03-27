@@ -2,8 +2,12 @@ import { useFlashcard, useQuiz } from "../../../hooks";
 import { Dictionary, Syllable } from "../../../types";
 
 const FrontCard = () => {
-  const { showRomaji, isDictionaryQuiz, isWritingQuiz } = useQuiz();
+  const { syllabaryQuizConfig, dictionaryQuizConfig } = useQuiz();
   const { currentFlashcard } = useFlashcard();
+
+  const isDictionaryQuiz = !!dictionaryQuizConfig;
+  const isWritingQuiz = syllabaryQuizConfig && syllabaryQuizConfig.writing;
+  const showRomaji = dictionaryQuizConfig && dictionaryQuizConfig.showRomaji;
 
   const classes = isDictionaryQuiz || isWritingQuiz ? "text-xl" : "text-6xl";
 

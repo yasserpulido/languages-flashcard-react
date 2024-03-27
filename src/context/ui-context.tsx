@@ -10,9 +10,11 @@ type UIContextType = {
 
 export const UIContext = createContext<UIContextType | null>(null);
 
-export const UIProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+export const UIProvider = ({ children }: Props) => {
   const [responseMessage, setResponseMessage] = useState<ResponseMessage>({
     show: false,
     type: "success",
@@ -29,11 +31,7 @@ export const UIProvider: React.FC<{ children: React.ReactNode }> = ({
       setResponseMessage,
       resetResponseMessage,
     }),
-    [
-      responseMessage,
-      setResponseMessage,
-      resetResponseMessage,
-    ]
+    [responseMessage, setResponseMessage, resetResponseMessage]
   );
 
   return <UIContext.Provider value={value}>{children}</UIContext.Provider>;

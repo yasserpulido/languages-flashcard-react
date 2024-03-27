@@ -14,14 +14,14 @@ const borderClasses = {
   warning: "btn-border-warning",
 };
 
-type ButtonProps = {
+type Props = {
   onClick?: () => void;
   children: React.ReactNode;
   color: "primary" | "secondary" | "success" | "danger" | "warning";
   type?: "button" | "submit" | "reset";
 };
 
-const Button = ({ onClick, children, color, type = "button" }: ButtonProps) => {
+const Button = ({ onClick, children, color, type = "button" }: Props) => {
   return (
     <button
       type={type}

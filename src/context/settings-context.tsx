@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useMemo } from "react";
 
 import { UserData } from "../types";
-import { useUI, useUserData } from "../hooks";
+import { useJapenese, useUI } from "../hooks";
 
 type SettingsContextType = {
   downloadJson: () => void;
@@ -12,12 +12,12 @@ export const SettingsContext = createContext<SettingsContextType | undefined>(
   undefined
 );
 
-type SettingsProviderProps = {
+type Props = {
   children: React.ReactNode;
 };
 
-export const SettingsProvider = ({ children }: SettingsProviderProps) => {
-  const { userData, setUserData } = useUserData();
+export const SettingsProvider = ({ children }: Props) => {
+  const { userData, storeUserData } = useJapenese();
   const { setResponseMessage } = useUI();
 
   const isValidUserData = (obj: unknown): obj is UserData => {
@@ -80,8 +80,7 @@ export const SettingsProvider = ({ children }: SettingsProviderProps) => {
               const parsed = JSON.parse(content as string);
 
               if (isValidUserData(parsed)) {
-                setUserData(parsed);
-                localStorage.setItem("userData", JSON.stringify(parsed));
+                storeUserData(parsed);
                 setResponseMessage({
                   show: true,
                   type: "success",
@@ -107,7 +106,7 @@ export const SettingsProvider = ({ children }: SettingsProviderProps) => {
         }
       }
     };
-  }, [setResponseMessage, setUserData]);
+  }, [setResponseMessage, storeUserData]);
 
   const value = useMemo(
     () => ({
