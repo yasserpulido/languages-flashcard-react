@@ -1638,6 +1638,7 @@
                 "translation": "Mr., Mrs., Miss, Ms.",
                 "audioName": "san.mp3",
                 "categories": [
+                    "suffix",
                     "honourifics"
                 ],
                 "logographic": "hiragana"
@@ -2835,6 +2836,286 @@
                     "noun"
                 ],
                 "logographic": "katakana"
+            },
+            {
+                "id": 119,
+                "word": "プログラマー",
+                "romaji": "pu ro gu ra ma a",
+                "translation": "programmer",
+                "audioName": "puroguramaa.mp3",
+                "categories": [
+                    "people",
+                    "noun"
+                ],
+                "logographic": "katakana"
+            },
+            {
+                "id": 120,
+                "word": "ちゃん",
+                "romaji": "cha n",
+                "translation": "suffix for children or close friends",
+                "audioName": "chan.mp3",
+                "categories": [
+                    "suffix",
+                    "honourifics"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 121,
+                "word": "です",
+                "romaji": "de su",
+                "translation": "is, are, am",
+                "audioName": "desu.mp3",
+                "categories": [
+                    "verb",
+                    "copula"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 122,
+                "word": "ありません",
+                "romaji": "a ri ma se n",
+                "translation": "is not, are not, am not",
+                "audioName": "arimasen.mp3",
+                "categories": [
+                    "verb",
+                    "copula"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 123,
+                "word": "はじめまして",
+                "romaji": "ha ji me ma shi te",
+                "translation": "nice to meet you",
+                "audioName": "hajimemashite.mp3",
+                "categories": [
+                    "greetings"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 124,
+                "word": "おはようございます",
+                "romaji": "o ha yo u go za i ma su",
+                "translation": "good morning",
+                "audioName": "ohayougozaimasu.mp3",
+                "categories": [
+                    "greetings"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 125,
+                "word": "こんばんわ",
+                "romaji": "ko n ba n wa",
+                "translation": "good evening",
+                "audioName": "konbanwa.mp3",
+                "categories": [
+                    "greetings"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 126,
+                "word": "よろしくおねがいいたします",
+                "romaji": "yo ro shi ku o ne ga i ta shi ma su",
+                "translation": "please treat me well",
+                "audioName": "yoroshikuonegaiitashimasu.mp3",
+                "categories": [
+                    "greetings"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 127,
+                "word": "あたし",
+                "romaji": "a ta shi",
+                "translation": "I, me (feminine)",
+                "audioName": "atashi.mp3",
+                "categories": [
+                    "personal pronoun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 128,
+                "word": "ぼく",
+                "romaji": "bo ku",
+                "translation": "I, me (masculine)",
+                "audioName": "boku.mp3",
+                "categories": [
+                    "personal pronoun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 129,
+                "word": "ぼく",
+                "romaji": "bo ku",
+                "translation": "I, me (masculine)",
+                "audioName": "boku.mp3",
+                "categories": [
+                    "personal pronoun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 130,
+                "word": "しゅっしん",
+                "romaji": "shu ttsu shi n",
+                "translation": "from",
+                "audioName": "shusshin.mp3",
+                "categories": [
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 131,
+                "word": "ねずみ",
+                "romaji": "ne zu mi",
+                "translation": "mouse",
+                "audioName": "nezumi.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 132,
+                "word": "うし",
+                "romaji": "u shi",
+                "translation": "cow, ox",
+                "audioName": "ushi.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 133,
+                "word": "とら",
+                "romaji": "to ra",
+                "translation": "tiger",
+                "audioName": "tora.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 134,
+                "word": "うさぎ",
+                "romaji": "u sa gi",
+                "translation": "rabbit",
+                "audioName": "usagi.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 135,
+                "word": "へび",
+                "romaji": "he bi",
+                "translation": "snake",
+                "audioName": "hebi.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 136,
+                "word": "うま",
+                "romaji": "u ma",
+                "translation": "horse",
+                "audioName": "uma.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 135,
+                "word": "いぬ",
+                "romaji": "i nu",
+                "translation": "dog",
+                "audioName": "inu.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 136,
+                "word": "うま",
+                "romaji": "u ma",
+                "translation": "horse",
+                "audioName": "uma.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 137,
+                "word": "ひつじ",
+                "romaji": "hi tsu ji",
+                "translation": "sheep",
+                "audioName": "hitsuji.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 138,
+                "word": "さる",
+                "romaji": "sa ru",
+                "translation": "monkey",
+                "audioName": "saru.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 139,
+                "word": "とり",
+                "romaji": "to ri",
+                "translation": "bird",
+                "audioName": "tori.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
+            },
+            {
+                "id": 140,
+                "word": "いのしし",
+                "romaji": "i no shi shi",
+                "translation": "boar",
+                "audioName": "inoshishi.mp3",
+                "categories": [
+                    "animals",
+                    "noun"
+                ],
+                "logographic": "hiragana"
             }
         ]
     }
