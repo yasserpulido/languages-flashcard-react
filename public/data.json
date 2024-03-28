@@ -1531,7 +1531,8 @@
                 "audioName": "to.mp3",
                 "categories": [
                     "particle",
-                    "noun"
+                    "noun",
+                    "demonstrative pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -1671,7 +1672,7 @@
                 "translation": "this",
                 "audioName": "kore.mp3",
                 "categories": [
-                    "pronoun"
+                    "demonstrative pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -1682,7 +1683,7 @@
                 "translation": "that",
                 "audioName": "sore.mp3",
                 "categories": [
-                    "pronoun"
+                    "demonstrative pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2148,8 +2149,7 @@
                 "translation": "what",
                 "audioName": "nani.mp3",
                 "categories": [
-                    "pronoun",
-                    "question word"
+                    "interrogative pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2287,7 +2287,8 @@
                 "translation": "let's go",
                 "audioName": "ikimashou.mp3",
                 "categories": [
-                    "verb"
+                    "verb",
+                    "expression"
                 ],
                 "logographic": "hiragana"
             },
@@ -2404,7 +2405,7 @@
                 "translation": "that",
                 "audioName": "are.mp3",
                 "categories": [
-                    "pronoun"
+                    "demonstrative pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2437,8 +2438,7 @@
                 "translation": "when",
                 "audioName": "itsu.mp3",
                 "categories": [
-                    "pronoun",
-                    "question word"
+                    "interrogative pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2449,8 +2449,7 @@
                 "translation": "where",
                 "audioName": "doko.mp3",
                 "categories": [
-                    "pronoun",
-                    "question word"
+                    "interrogative pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2461,8 +2460,7 @@
                 "translation": "why",
                 "audioName": "doushite.mp3",
                 "categories": [
-                    "pronoun",
-                    "question word"
+                    "interrogative pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2473,8 +2471,7 @@
                 "translation": "why",
                 "audioName": "naze.mp3",
                 "categories": [
-                    "pronoun",
-                    "question word"
+                    "interrogative pronoun"
                 ]
             },
             {
@@ -2484,8 +2481,7 @@
                 "translation": "who",
                 "audioName": "dare.mp3",
                 "categories": [
-                    "pronoun",
-                    "question word"
+                    "interrogative pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2496,7 +2492,7 @@
                 "translation": "here",
                 "audioName": "koko.mp3",
                 "categories": [
-                    "pronoun"
+                    "adverb"
                 ],
                 "logographic": "hiragana"
             },
@@ -2519,7 +2515,7 @@
                 "translation": "there",
                 "audioName": "soko.mp3",
                 "categories": [
-                    "pronoun"
+                    "adverb"
                 ],
                 "logographic": "hiragana"
             },
@@ -2552,7 +2548,7 @@
                 "translation": "I, me",
                 "audioName": "watashi.mp3",
                 "categories": [
-                    "pronoun"
+                    "personal pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2563,7 +2559,7 @@
                 "translation": "you",
                 "audioName": "anata.mp3",
                 "categories": [
-                    "pronoun"
+                    "personal pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2574,7 +2570,8 @@
                 "translation": "he, boyfriend",
                 "audioName": "kare.mp3",
                 "categories": [
-                    "pronoun"
+                    "personal pronoun",
+                    "noun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2585,7 +2582,8 @@
                 "translation": "she, girlfriend",
                 "audioName": "kanojo.mp3",
                 "categories": [
-                    "pronoun"
+                    "personal pronoun",
+                    "noun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2596,7 +2594,7 @@
                 "translation": "we, us",
                 "audioName": "watashitachi.mp3",
                 "categories": [
-                    "pronoun"
+                    "personal pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2607,7 +2605,7 @@
                 "translation": "you all",
                 "audioName": "anatatachi.mp3",
                 "categories": [
-                    "pronoun"
+                    "personal pronoun"
                 ],
                 "logographic": "hiragana"
             },
@@ -2618,7 +2616,7 @@
                 "translation": "they",
                 "audioName": "karera.mp3",
                 "categories": [
-                    "pronoun"
+                    "personal pronoun"
                 ],
                 "logographic": "hiragana"
             },
