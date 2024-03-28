@@ -12,10 +12,19 @@ const DictionaryQuizConfig = () => {
   const [categoryHasHard, setCategoryHasHard] = useState(false);
   const [checked, setChecked] = useState(false);
 
-  const categoriesSorted = [
-    "All",
-    ...dictionaryCategories.sort((a, b) => a.localeCompare(b)),
-  ];
+  const [categoriesSorted, setCategoriesSorted] = useState<string[]>([]);
+  const [logographicSelected, setLogographicSelected] = useState("hiragana");
+
+  useEffect(() => {
+    const categories =
+      logographicSelected === "hiragana"
+        ? dictionaryCategories.hiraganaCategories
+        : logographicSelected === "katakana"
+        ? dictionaryCategories.katakanaCategories
+        : dictionaryCategories.kanjiCategories;
+
+    setCategoriesSorted(["All", ...categories].sort());
+  }, [logographicSelected, dictionaryCategories]);
 
   useEffect(() => {
     for (const d of dictionaryData) {
@@ -65,6 +74,7 @@ const DictionaryQuizConfig = () => {
       showRomaji,
     });
 
+    setLogographicSelected("hiragana");
     setCategoryHasHard(false);
     setChecked(false);
     form.reset();
@@ -93,6 +103,7 @@ const DictionaryQuizConfig = () => {
               value="hiragana"
               defaultChecked
               id="hiragana"
+              onClick={() => setLogographicSelected("hiragana")}
             />
             <label className="ml-2" htmlFor="hiragana">
               Hiragana
@@ -103,8 +114,8 @@ const DictionaryQuizConfig = () => {
               type="radio"
               name="logographic"
               value="katakana"
-              disabled
               id="katakana"
+              onClick={() => setLogographicSelected("katakana")}
             />
             <label className="ml-2" htmlFor="katakana">
               Katakana
@@ -114,9 +125,10 @@ const DictionaryQuizConfig = () => {
             <input
               type="radio"
               name="logographic"
-              value="katakana"
+              value="kanji"
               disabled
               id="kanji"
+              onClick={() => setLogographicSelected("kanji")}
             />
             <label className="ml-2" htmlFor="kanji">
               Kanji

@@ -84,3 +84,9 @@ export type FlashcardMarked = {
     hard: number[];
   };
 };
+
+export type DictionaryCategories = {
+  hiraganaCategories: string[];
+  katakanaCategories: string[];
+  kanjiCategories: string[];
+};

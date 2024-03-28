@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import {
   Dictionary,
+  DictionaryCategories,
   FlashcardMarked,
   Japanese,
   Syllabary,
@@ -19,7 +20,7 @@ const userDataDefault: UserData = {
 };
 
 type DictionaryContextType = {
-  dictionaryCategories: string[];
+  dictionaryCategories: DictionaryCategories;
   userData: UserData;
   dictionaryData: Dictionary[];
   syllabaryData: Syllabary;
@@ -40,9 +41,12 @@ type Props = {
 
 export const JapaneseProvider = ({ children }: Props) => {
   const [japanese, setJapanese] = useState<Japanese | null>(null);
-  const [dictionaryCategories, setDictionaryCategories] = useState<string[]>(
-    []
-  );
+  const [dictionaryCategories, setDictionaryCategories] =
+    useState<DictionaryCategories>({
+      hiraganaCategories: [],
+      katakanaCategories: [],
+      kanjiCategories: [],
+    });
 
   const getInitialUserData = () => {
     const storedUserData = localStorage.getItem("userData");
@@ -71,11 +75,32 @@ export const JapaneseProvider = ({ children }: Props) => {
   }, []);
 
   const getDictionaryCategories = (dictionary: Dictionary[]) => {
-    const categories = dictionary.flatMap((d: Dictionary) => d.categories);
+    const categoriesByLogographic = {
+      hiraganCategories: dictionary.flatMap((word) =>
+        word.logographic === "hiragana" ? word.categories : []
+      ),
+      katakanaCategories: dictionary.flatMap((word) =>
+        word.logographic === "katakana" ? word.categories : []
+      ),
+      kanjiCategories: dictionary.flatMap((word) =>
+        word.logographic === "kanji" ? word.categories : []
+      ),
+    };
 
-    const uniqueCategories = Array.from(new Set(categories));
+    const uniqueCategories = (categories: string[]) =>
+      Array.from(new Set(categories));
 
-    setDictionaryCategories(uniqueCategories as string[]);
+    setDictionaryCategories({
+      hiraganaCategories: uniqueCategories(
+        categoriesByLogographic.hiraganCategories
+      ),
+      katakanaCategories: uniqueCategories(
+        categoriesByLogographic.katakanaCategories
+      ),
+      kanjiCategories: uniqueCategories(
+        categoriesByLogographic.kanjiCategories
+      ),
+    });
   };
 
   const storeUserDataWhenQuizEnds = (
